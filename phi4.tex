@@ -1,0 +1,220 @@
+\section{$\varphi^4$理論}
+
+\subsection{自由な実スカラー場の理論の2点Green関数}
+この節では、ラグランジアン密度
+\begin{equation}
+  \calL=\frac{1}{2}\bigl(\partial^\mu\varphi\partial_\mu\varphi-m^2\varphi\bigr)
+\end{equation}
+（$m$は正の定数）
+により定まる場の理論の2点Green関数を求める。
+この理論の運動方程式は、Klein-Gordon方程式
+\begin{equation}
+  (\partial^2+m^2)\varphi=0
+\end{equation}
+である。
+また、ハミルトニアン密度は
+\begin{equation}
+  \calH=\frac{1}{2}\bigl(\partial^\mu\varphi\partial_\mu\varphi+m^2\varphi\bigr)
+\end{equation}
+である。
+
+ある時刻$t$における場の演算子$\bfx \lmt \varphi(t,\bfx)$のFourier変換
+$\hat{\varphi}(t;\bfk)$を用いて、
+$\varphi(x)$を
+\begin{equation}
+  \varphi(t,\bfx)=
+  \frac{1}{\sqrt{(2\pi)^3}}
+  \int d^3\bfk\hat{\varphi}(t;\bfk) e^{i\bfk\cdot\bfx}
+\end{equation}
+と表示する。
+$\varphi(x)$がエルミートであることは
+$\hat{\varphi}(t;\bfk)^\dagger=\hat{\varphi}(t;-\bfk)$
+と同値であることに注意する。
+$E(\bfk)=\sqrt{\bfk^2+m^2}$とおく。
+場の演算子の運動方程式$(\partial^2+m^2)\varphi=0$より、
+Fourier変換$\hat{\varphi}(t;\bfk)$についての運動方程式
+\begin{equation}
+  \Bigl(\frac{d^2}{dt^2} - (i\bfk)^2 + m^2\Bigr)\hat{\varphi}(t;\bfk) = 0
+  \iff
+  \frac{d^2\hat{\varphi}(t;\bfk)}{dt^2} = -E(\bfk)^2\hat{\varphi}(t;\bfk)
+\end{equation}
+が得られる。
+この微分方程式の一般解は
+\begin{equation}
+  \hat{\varphi}(t;\bfk)=
+  A(\bfk)e^{-iE(\bfk)t}
+  +
+  B(\bfk)e^{iE(\bfk)t}
+\end{equation}
+であり、
+条件$\hat{\varphi}(t;\bfk)^\dagger=\hat{\varphi}(t;-\bfk)$は
+$B(\bfk)^\dagger=A(-\bfk)$と同値である。
+
+よって
+\begin{align*}
+  \varphi\bigl(t,\bfx\bigr) &=
+  \frac{1}{\sqrt{(2\pi)^3}}
+  \int d^3\bfk\hat{\varphi}(t;\bfk) e^{i\bfk\cdot\bfx} \\ &=
+  \frac{1}{\sqrt{(2\pi)^3}}
+  \int d^3\bfk
+  \bigl( A(\bfk)e^{-iE(\bfk)t}+B(\bfk)e^{iE(\bfk)t} \bigr)e^{i\bfk\cdot\bfx} \\ &=
+  \frac{1}{\sqrt{(2\pi)^3}}
+  \int d^3\bfk
+  \bigl(
+  A(\bfk)e^{-i(E(\bfk)t-\bfk\cdot\bfx)}
+  +B(-\bfk)e^{i(E(\bfk)t-\bfk\bfx)}
+  \bigr) \\ &=
+  \frac{1}{\sqrt{(2\pi)^3}}
+  \int d^3\bfk
+  \bigl(
+  A(\bfk)e^{-i(E(\bfk)t-\bfk\cdot\bfx)}
+  +A(\bfk)^\dagger e^{i(E(\bfk)t-\bfk\bfx)}
+  \bigr)
+  \\ &=
+ \frac{1}{\sqrt{(2\pi)^3}}
+ \int d^3\bfk
+ \bigl.\bigl(
+ A(\bfk)e^{-ikx}
+ +A(\bfk)^\dagger e^{ikx}
+ \bigr)\bigr|_{k_0=E(\bfk)}
+\end{align*}
+と表示することができる。
+これは、
+$\varphi(x)$がエルミートであるようなクライン・ゴルドン方程式の一般解である。
+
+ここで、消滅演算子$a(\bfk)$を
+\begin{equation}
+  \frac{a(\bfk)}{\sqrt{2E(\bfk)}}=A(\bfk)
+\end{equation}
+により定めれば、
+\begin{equation}
+  \varphi(x) =
+  \int
+  \frac{d^3\bfk}{\sqrt{(2\pi)^3 2E(\bfk)}}
+  \bigl. \bigl(
+    a(\bfk)e^{-ikx}+a^\dagger(\bfk)e^{ikx}
+  \bigr) \bigr|_{k_0=E(\bfk)}
+\end{equation}
+となる。
+
+この表示を用いて、
+複素時刻$t\in\bbC$に対する$\varphi(t,\bfx)$の値を定義する。
+
+\begin{thm}
+  \label{thm-residue-energy-pole}
+  数$E \in\bbR_{>0}, \tau\in e^{-i\delta}\bbR$に対し、積分
+  \begin{equation}
+    I(\tau,E)=\int_{-e^{i\delta}\infty}^{e^{i\delta}\infty}
+    \frac{e^{-i\omega\tau}}{\omega^2-E^2}
+    d\omega
+    \quad
+    (\omega\in e^{i\delta}\bbR)
+  \end{equation}
+  を計算すると、
+  \begin{equation}
+    I(\tau,E)=
+    \begin{cases}
+      \frac{\pi i}{E} e^{-iE\tau} & (\tau > 0)\\
+      \frac{\pi i}{E} e^{iE\tau} & (\tau < 0)
+    \end{cases}
+  \end{equation}
+  となる。
+\end{thm}
+
+\begin{proof}
+留数定理。
+\end{proof}
+
+\begin{thm}
+  $\delta \in (0,2\pi)$と
+  $x,y \in e^{-i\delta}\bbR \times \bbR^3$に対し、
+  \begin{equation}
+  iG_\delta(x,y)=
+  \int_{k_0\in e^{-i\delta}\bbR}
+  \frac{d^4k}{(2\pi)^4}
+  \frac{e^{-ik(x-y)}}{k^2-m^2}
+  \end{equation}
+  が成り立つ。
+\end{thm}
+
+\begin{proof}
+  グリーン関数
+  \begin{equation}
+    G_\delta(x,y)=\bra{0}\calT\{\varphi(x)\varphi(y)\}\ket{0}
+  \end{equation}
+  を計算する。
+  $x^0>y^0$のとき、$a(\bfk)\ket{0}=0$より
+  \begin{equation}
+    \bra{0}\varphi(x)\varphi(y)\ket{0}=
+    \int \frac{d^3\bfk d^3\bfk'}{(2\pi)^3 2\sqrt{E(\bfk)E(\bfk')}}
+    \bra{0}a(\bfk)a^\dagger(\bfk')\ket{0}
+    \bigl.e^{-ikx}e^{ik'y}\bigr|_{k_0=E(\bfk),k'_0=E(\bfk')}
+  \end{equation}
+  である。
+  交換関係
+  $[a(\bfk),a^\dagger(\bfk')]=\delta^3(\bfk-\bfk')$
+  より$\bra{0}a(\bfk)a^\dagger(\bfk')\ket{0}=\delta^3(\bfk-\bfk')$
+  となるため、
+  \begin{equation}
+    \bra{0}\varphi(x)\varphi(y)\ket{0}=
+    \int \frac{d^3\bfk}{2(2\pi)^3E(\bfk)}
+    e^{-ik(x-y)}\bigr|_{k_0=E(\bfk)}
+  \end{equation}
+  が得られる。
+  よって、一般の$x,y$に対し、
+  \begin{equation}
+    G_\delta(x,y)=
+    \int \frac{d^3\bfk}{(2\pi)^3 2E(\bfk)}
+    \bigl.
+    \bigl(
+    \theta(x^0-y^0)
+    e^{-ik(x-y)}
+    +
+    \theta(y^0-x^0)
+    e^{ik(x-y)}
+    \bigr)
+    \bigr|_{k_0=E(\bfk)}
+  \end{equation}
+  である。
+  定理\ref{thm-residue-energy-pole}を用いると、
+  \begin{align*}
+    G_\delta(x,y) &=
+    \int \frac{d^3\bfk}{(2\pi)^3 4\pi i}
+    \Bigl(
+    \theta(x^0-y^0)
+    I\bigl(x^0-y^0,E(\bfk)\bigr)
+    e^{-i\bfk(\bfx-\bfy)}
+    +
+    \theta(y^0-x^0)
+    I\bigl(x^0-y^0,E(\bfk)\bigr)
+    e^{i\bfk(\bfx-\bfy)}
+    \Bigr) \\  &=
+    \int \frac{d^3\bfk}{(2\pi)^3 4\pi i}
+    \Bigl(
+    \theta(x^0-y^0)
+    I\bigl(x^0-y^0,E(\bfk)\bigr)
+    e^{-i\bfk(\bfx-\bfy)}
+    +
+    \theta(y^0-x^0)
+    I\bigl(x^0-y^0,E(\bfk)\bigr)
+    e^{-i\bfk(\bfx-\bfy)}
+    \Bigr) \\ &=
+    \int \frac{d^3\bfk}{(2\pi)^3 4\pi i}
+    \bigl(\theta(x^0-y^0)+\theta(y^0-x^0)\bigr)
+    I\bigl(x^0-y^0,E(\bfk)\bigr)
+    e^{-i\bfk(\bfx-\bfy)} \\ &=
+    \int \frac{d^3\bfk}{(2\pi)^3 2\pi i}
+    I\bigl(x^0-y^0,E(\bfk)\bigr)
+    e^{-i\bfk(\bfx-\bfy)} \\ &=
+    \int \frac{d^3\bfk}{(2\pi)^3 2\pi i}
+    \int_{-e^{i\delta}\infty}^{e^{i\delta}\infty}
+    dk_0
+    \frac{e^{-ik_0(x^0-y^0)}}{k_0^2-E(\bfk)^2}
+    e^{-i\bfk(\bfx-\bfy)} \\ &=
+    \int \frac{d^3\bfk}{(2\pi)^3 2\pi i}
+    \int_{-e^{i\delta}\infty}^{e^{i\delta}\infty}
+    dk_0
+    \frac{e^{-ik(x-y)}}{k^2-m^2}
+  \end{align*}
+  より主張を得る。
+\end{proof}

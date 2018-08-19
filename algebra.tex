@@ -1,0 +1,374 @@
+\section{代数学}
+
+\subsection{クリフォード代数}
+$K$を体$\bbR$または体$\bbC$とする。
+$V$を有限次元$K$ベクトル空間とする。
+$\langle,\rangle \colon V \otimes V \lra K$
+を対称双線型形式とする。
+
+\begin{dfn}
+  \label{definition-of-clifford-algebra}
+   クリフォード代数$\Cl(V,\langle,\rangle)$とは、
+   組$(A, i)$であって、条件
+   \begin{enumerate}
+     \item
+     $A$は$K$上の代数。
+     \item
+     $i \colon V \lra A$は線形写像で、
+     任意の$x, y \in V$に対し関係式
+     \begin{equation}
+       \label{clifford-algebra-defining-relation}
+       \{i(x),i(y)\} = 2\langle x,y\rangle
+     \end{equation}
+     が成り立つ。
+   \end{enumerate}
+   ようなもものうち、普遍的なもののことである。
+
+   明示的には, $V$が生成するテンソル代数
+   \begin{equation}
+     T(V) = \bigoplus_{n\geq 0}V^{\otimes n}
+   \end{equation}
+   を考え、自然な単射写像を$i \colon V \lra T(V)$と書くとき、
+   関係式(\ref{clifford-algebra-defining-relation})
+   で$T(V)$を剰余して得られる代数が$\Cl(V,\langle,\rangle)$である。
+\end{dfn}
+
+\begin{rem}
+  定義(\ref{definition-of-clifford-algebra})の状況を考える。
+  テンソル代数$T(V)$は自然な$\bbZ_2 = \bbZ/2\bbZ$次数付けを持つ。
+  関係式(\ref{clifford-algebra-defining-relation})
+  が生成するイデアルはこの次数について斉次であるため、
+  Clifford代数$\Cl(V,\langle,\rangle)$も$\bbZ_2$次数付けを持つ。
+  次数$m$の部分空間（$m=0,1$）は$\Cl(V,\langle,\rangle)_m$と表記される。
+\end{rem}
+
+\begin{rem}
+$i \colon V \lra \Cl(V,\langle,\rangle)$が単射であることが次のようにしてわかる。
+関係式(\ref{clifford-algebra-defining-relation})が生成する$T(V)$のイデアルを$I$とする。
+また、イデアル$\bigoplus_{n\geq 1}V^{\otimes n} \subset T(V)$を$J$とする。
+$I \subset J$であるため, イデアル$J/I \subset \Cl(V,\langle,\rangle)$を考えることができる
+よって、線形写像$j\colon\Cl(V,\langle,\rangle) \lra \Cl(V,\langle,\rangle)/(J/I) = T(V)/J = V$
+が得られる。
+この線形写像が$j \circ i = \id$を満たすので、$i$は単射である。
+以下では$V \subset \Cl(V,\langle,\rangle)$と考え、
+記号$i$は省略する。
+\end{rem}
+
+\begin{dfn}
+  線型写像$V\lra V; x \lmt -x$は、
+  $K$代数の準同型
+  $\alpha\colon\Cl(V,\langle,\rangle)\lra\Cl(V,\langle,\rangle)$
+  を誘導する。
+\end{dfn}
+
+\begin{dfn}
+  \label{dfn-beta-tranposing-antihomomorphism-clifford-algebra}
+  $K$代数の反準同型
+  \begin{equation}
+    \beta \colon T(V)\lra T(V);
+    x_1\otimes\cdots\otimes x_n \lra
+    x_n\otimes\cdots\otimes x_1
+  \end{equation}
+  は、$K$代数の反準同型
+  $\beta \colon\Cl(V,\langle,\rangle)\lra\Cl(V,\langle,\rangle)$
+  を誘導する。
+\end{dfn}
+
+\begin{dfn}
+  $p,q\geq 0$を非負整数とする。
+  $\Cl^{p+q}(\bbR)$は、$\bbR^{p+q}$上の双線型形式
+  \begin{equation}
+    \langle(x_1,\ldots,x_{p+q}),(y_1,\ldots,y_{p+q})\rangle=
+    \sum_{i=1}^{p}x_iy_i-\sum_{i={p+1}}^{p+q}x_iy_i
+  \end{equation}
+  から定まるClifford代数のことである。
+\end{dfn}
+
+\subsection{パウリ行列}
+\begin{dfn}
+  Pauli行列 $\sigma_i \in \Mat_2(\bbC)$（$i=1,2,3$）とは、
+  \begin{equation}
+    \sigma_1 = \begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
+    \sigma_2 = \begin{pmatrix}0&-i\\i&0\end{pmatrix},\quad
+    \sigma_3 = \begin{pmatrix}1&0\\0&-1\end{pmatrix}
+  \end{equation}
+  のことである。
+\end{dfn}
+
+\begin{thm}
+  次の関係式が成り立つ。
+  \begin{equation}
+    \sigma_i^2 = 1\ (i = 1,2,3),\quad
+    \sigma_i\sigma_j=-\sigma_j\sigma_i=i\sigma_k
+    \ \bigl((i,j,k)=(1,2,3),(2,3,1),(3,1,2)\bigr).
+  \end{equation}
+  \begin{equation}
+    \{\sigma_i,\sigma_j\}=2\delta_{ij}.
+  \end{equation}
+  \begin{equation}
+    \det \sigma_i = -1,\quad \Tr \sigma_i = 0, \quad
+    \Tr (\sigma_i \sigma_j) = 2\delta_{ij}.
+  \end{equation}
+\end{thm}
+
+\begin{thm}
+  \label{I-and-Pauli-matrices-is-ortho-basis}
+  \begin{enumerate}
+    \item 行列$\{I, \sigma_1, \sigma_2, \sigma_3\}$は、
+          Hilbert-Smidt内積について互いに直交かつそれぞれの長さが$\sqrt{2}$である。
+    \item 行列$\{\sigma_1, \sigma_2, \sigma_3\}$は、
+          トレースのないHermite行列のなす$\bbR$線型空間
+          $\{M\in\Mat_2(\bbC) \mid M^\dagger=M, \Tr M = 0\}$
+          の基底である。
+    \item 行列$\{I, \sigma_1, \sigma_2, \sigma_3\}$は、
+          Hermite行列全体のなす$\bbR$線型空間$\{M\in\Mat_2(\bbC) \mid M^\dagger=M\}$
+          の基底である。
+    \item 行列$\{I, \sigma_1, \sigma_2, \sigma_3\}$は、
+          $\bbC$線型空間$\Mat_2(\bbC)$の基底である。
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  $e_i \in \bbR^{3}$を標準基底とする（$i=1,2,3$）。
+  Pauli行列が生成する$\Mat_2(\bbC)$の部分$\bbR$代数$A$は$\Mat_2(\bbC)$全体である。
+  また、自然な同型
+  \begin{equation}
+    \Cl^{3+0}(\bbR) \isolra A = \Mat_2(\bbC); e_i \lmt \sigma_i
+  \end{equation}
+  がある。
+\end{thm}
+
+\begin{proof}
+  Pauli行列の交換関係とClifford代数の普遍性より、
+  全射$\Cl^{3+0}(\bbR)\lra A$が誘導される。
+  これが全単射であることを示すためには$\dim A\geq\dim\Cl^{3+0}(\bbR)=8$を示せばよい。
+  $I\in\Mat_2(\bbC)$を単位行列とするとき、
+  \begin{equation}
+    I, \sigma_1, \sigma_2, \sigma_3,
+    iI, i\sigma_1, i\sigma_2, i\sigma_3 \in A
+  \end{equation}
+  である。
+  定理\ref{I-and-Pauli-matrices-is-ortho-basis}より、
+  \begin{equation}
+  \Mat_2(\bbC)=\bbC I\oplus\bbC\sigma_1\oplus\bbC\sigma_2\oplus\bbC\sigma_3
+  =\bbR I\oplus\bbR\sigma_1\oplus\bbR\sigma_2\oplus\bbR\sigma_3
+  \oplus\bbR iI\oplus\bbR i\sigma_1\oplus\bbR i\sigma_2\oplus\bbR i\sigma_3
+  \end{equation}
+  なので、これらは$\bbR$上で$8$次元ベクトル空間を生成する。
+\end{proof}
+
+\subsection{ガンマ行列}
+\begin{dfn}
+  ガンマ行列$\gamma^{\mu} \in \Mat_4(\bbC)$（$\mu=0,1,2,3$）とは、
+  \begin{equation}
+    \gamma^0 = \begin{pmatrix}I&0\\0&-I\end{pmatrix},\quad
+    \gamma^i = \begin{pmatrix}0&\sigma_i\\-\sigma_i&0\end{pmatrix}
+    \ (i=1,2,3)
+  \end{equation}
+  のことである。
+\end{dfn}
+
+\begin{thm}
+  $\bbR$代数の準同型
+  $\Cl^{1+3}(\bbR)\lra \Mat_4(\bbC);\ e_\mu \lmt \gamma^\mu$
+  が定まる。
+  さらに、これは$\bbC$代数の同型
+  $\Cl^{1+3}(\bbC)\isolra \Mat_4(\bbC)$
+  を誘導する。
+\end{thm}
+
+\begin{proof}
+  Zeeの本の計算方法がわかりやすくて良い。
+\end{proof}
+
+\begin{dfn}
+  Clifford代数$\Cl^{1+3}(\bbC)$には、
+  同型を除いて唯一の既約複素表現$\Delta$が存在し、その次元は$4$である。
+\end{dfn}
+
+\begin{dfn}
+  $e_5=ie_0e_1e_2e_3$により元$e_5\in\Cl^{1+3}(\bbC)$を定義する
+  （「$e_4$」ではないことに注意）。
+  また、$\bbC$代数の同型
+  $\Cl^{1+3}(\bbC)\isolra \Mat_4(\bbC)$
+  によって$e_5$に対応する行列を$\gamma^5\in \Mat_4(\bbC))$とする。
+  具体的には
+  \begin{equation}
+    \gamma^5=\begin{pmatrix}0&I\\I&0\end{pmatrix}
+  \end{equation}
+  である。
+\end{dfn}
+
+\begin{rem}
+  $\gamma^5$の計算はやはりZeeの本の方法で行うこと。
+\end{rem}
+
+\begin{thm}
+  $(e_5)^2=1$が成り立つ。
+\end{thm}
+
+\begin{proof}
+  Clifford代数の定義の関係式を用いて計算すると、
+  \begin{equation}
+    (e_5)^2=i^2(e_0)^2(e_1)^2(e_2)^2(e_3)^2
+    =(-1)\cdot 1\cdot(-1)\cdot(-1)\cdot(-1)=1
+  \end{equation}
+  となる。
+\end{proof}
+
+\begin{thm}
+  \label{gamma5-anticommute-gamma-matrices}
+  反交換関係$\{e_5,e_\mu\}=0$（$\mu=0,1,2,3$）が成り立つ。
+\end{thm}
+
+\begin{thm}
+  Clifford代数$\Cl^{1+3}(\bbC)$の次数$0$部分（偶数部分）を$\Cl^{1+3}_\even(\bbC)$と書く。
+  このとき、$e_5$は$\Cl^{1+3}_\even(\bbC)$の中心に属する。
+\end{thm}
+
+\begin{proof}
+  定理\ref{gamma5-anticommute-gamma-matrices}から容易に従う。
+\end{proof}
+
+\begin{rem}
+  $e_5$は$\Cl^{1+3}(\bbC)$の中心には属さない。
+  これは、$\gamma^5$が対角行列ではないことからわかる。
+\end{rem}
+
+\begin{dfn}
+  Clifford代数$\Cl^{1+3}(\bbC)$の既約表現$\Delta$を選ぶ。
+  このとき、$e_5$による$\Delta$の固有空間分解を
+  \begin{equation}
+    \Sigma_{\pm}=\{ s \in \Delta \mid e_5 s = \pm s \}
+  \end{equation}
+  と定義する。
+  射影作用素
+  $P_{\pm}=(1\pm e_5)/2$
+  を用いて
+  $\Sigma_{\pm}=P_{\pm}\Delta$
+  と定義することもできる。
+  これに伴い、表現$\Delta$を$\Cl^{1+3}_\even(\bbC)$への制限は
+  $2$つの表現$\Sigma_{\pm}$に分解する。
+  これらの表現をWeyl表現、あるいはカイラル表現と呼ぶ。
+\end{dfn}
+
+\begin{rem}
+  +/-の代わりにR/Lを用い、右手表現、左手表現と呼ぶこともある。
+\end{rem}
+
+\begin{thm}
+  Wely表現は、偶数部分$\Cl^{1+3}_\even(\bbC)$の$2$つの相異なる既約表現であり、
+  また、$\Cl^{1+3}_\even(\bbC)$の既約表現はこれらのみである。
+\end{thm}
+
+\begin{dfn}
+  $V$を有限次元$\bbC$ベクトル空間とする。
+  \begin{enumerate}
+    \item
+    複素共役準同型$\sigma\colon\bbC\lra\bbC$に沿って$V$を係数拡大したもの
+    $V\otimes\sigma$を$\overline{V}$と書き、
+    $V$の複素共役空間と呼ぶ。
+    この操作は双対と交換する。
+    すなわち、自然な同一視 $\overline{V^{\vee}}=\overline{V}^{\vee}$ が存在する。
+    \item
+    反線型写像$f \colon V\lra V$とは、$z \in \bbC, v \in V$
+    に対して$f(zv)=\overline{z}v$を満たす$\bbR$線型写像のことである。
+    言い換えれば、$\bbC$線型写像$\overline{V}\lra V$や$V\lra\overline{V}$を
+    自然な包含写像$V\lra\overline{V}$によって
+    写像$V\lra V$とみなしたもののことである。
+    \item
+    $V$上のHermitian形式とは、
+    $\bbC$線型写像
+    $\langle,\rangle\colon\overline{V}\otimes_{\bbC}V\lra\bbC$
+    のことである。
+    これは$\bbC$線型写像
+    $V\lra\overline{V}^\vee; v \lmt (w \lmt \langle w, v\rangle)$ を誘導する。
+    \item
+    $\bbC$代数の反準同型写像
+    \begin{equation}
+      \End_{\bbC}(V)\lra\End_{\bbC}(V^{\vee});
+      f \lmt (g \lmt g \circ f )
+    \end{equation}
+    を転置とよぶ。
+    これは、$V$の基底とそれに伴う$V^{\vee}$の双対基底のもとで、
+    表現行列の転置をとる操作に対応する。
+    \item
+    $\bbC$代数の反線型準同型写像
+    \begin{equation}
+      \End_\bbC(V)\lra\End_\bbC(\overline{V});
+      f \lmt f \otimes_\sigma \id_\bbC
+    \end{equation}
+    を共役と呼ぶ。
+    これは、$V$の基底とそれに伴う$\overline{V}$の基底のもとで、
+    表現行列の各成分の複素共役をとる操作に対応する。
+    \item
+    自己準同型に対する転置と共役は可換な操作である。
+    \item
+    転置と共役の合成は$\bbC$代数の反線型反準同型写像
+    $\dagger\colon\End_\bbC(V)\lra\End_\bbC(\overline{V}^{\vee})$
+    であり、Hermitian共役と呼ばれる。
+    これは$V$の基底とそれに伴う$\overline{V}^\vee$の基底のもとで、
+    表現行列のHermitian共役をとる操作に対応する。
+  \end{enumerate}
+\end{dfn}
+
+\begin{dfn}
+  $(\rho, \Delta)$を
+  $\Cl^{1+3}(\bbR)$の複素表現とするとき、
+  表現$(\overline{\rho}^\vee,\overline{\Delta}^\vee)$を
+  合成
+  \begin{equation}
+    \Cl^{1+3}(\bbR)\stackrel{\beta}{\lra}\Cl^{1+3}(\bbR)
+    \stackrel{\rho}{\lra}
+    \End_\bbC(\Delta)\stackrel{\dagger}{\lra}\End_\bbC(\overline{\Delta}^\vee)
+  \end{equation}
+  により定める。
+  ここで、$\bbR$代数の反準同型写像
+  $\beta\colon\Cl^{1+3}(\bbR)\lra\Cl^{1+3}(\bbR)$は
+  定義\ref{dfn-beta-tranposing-antihomomorphism-clifford-algebra}のものである。
+\end{dfn}
+
+\begin{dfn}
+  $\Cl^{1+3}(\bbR)$のDirac表現$\Delta$とは、
+  Hermitian内積$\langle,\rangle$を持つ$\bbC$ベクトル空間$\Delta$上の既約表現であって、
+  $\bbC$線型写像
+  \begin{equation}
+    \Delta \stackrel{e_0}{\lra} \Delta
+    \stackrel{v \lmt \langle \cdot, v \rangle}{\lra}
+    \overline{\Delta}^\vee
+  \end{equation}
+  が表現の準同型になっているもののことをいう。
+  Dirac表現に対し、上の写像を$\psi\lmt\overline{\psi}$と書き、Dirac共役と呼ぶ。
+\end{dfn}
+
+\begin{thm}
+  $\Delta=\bbC^4$に標準的なHermitian内積を定める時、
+  ガンマ行列による表現
+  $\gamma\colon\Cl^{1+3}(\bbR)\lra \Mat_4(\bbC)$
+  はDirac表現である。
+\end{thm}
+
+\begin{proof}
+  $\Delta$および$\overline{\Delta}^\vee$の標準基底に関して、写像
+  $\Delta\stackrel{v \lmt \langle \cdot, v\rangle}{\lra}\overline{\Delta}^\vee$
+  の表現行列は単位行列であるため、
+  合成
+  \begin{equation}
+    \Delta \stackrel{e_0}{\lra} \Delta
+    \stackrel{v \lmt \langle \cdot, v \rangle}{\lra}
+    \overline{\Delta}^\vee
+  \end{equation}
+  の表現行列は$\gamma^0$となる。
+  よって、ガンマ行列の関係式$(\gamma^\mu)^\dagger\gamma^0=\gamma^0\gamma^\mu$
+  よりこの写像が表現の同型であることがわかる。
+\end{proof}
+
+\begin{thm}
+  Clifford代数$\Cl^{1+3}(\bbR)$の既約な複素表現$\Delta$に対し、
+  $\Delta$をDirac表現たらしめるようなHermitian内積$\langle,\rangle$が
+  スカラー倍を除いて一意に存在する。
+\end{thm}
+
+\begin{proof}
+  Clifford代数$\Cl^{1+3}(\bbR)$の既約表現の分類と、Schurの補題より従う。
+\end{proof}

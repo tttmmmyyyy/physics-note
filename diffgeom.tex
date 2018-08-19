@@ -1,0 +1,1387 @@
+\section{微分幾何学}
+
+\subsection{微分作用素}
+\begin{dfn}
+$M$を多様体とする.
+$M$上の微分形式に対する次数$d$の微分作用素とは, 線形写像
+\begin{equation}
+D \colon \Omega^k(M) \lra \Omega^{k+d}(M)
+\end{equation}
+であって, Leibnitz則
+\begin{equation}
+  \forall\omega \in \Omega^l(M), \forall\eta \in \Omega^l(M), \quad
+  D(\omega \wedge \eta) = D(\omega)\wedge\eta + (-1)^{k}\omega\wedge D(\eta)
+\end{equation}
+を満たすもののことをいう.
+\end{dfn}
+
+\begin{dfn}[Lie微分]
+\end{dfn}
+
+\begin{dfn}[挿入演算子]
+\end{dfn}
+
+\begin{thm}
+\begin{enumerate}
+\item
+\begin{equation}
+\calL_X = i_X \circ d + d \circ i_X
+\end{equation}
+\item
+\begin{equation}
+\calL_XY = [X, Y]
+\end{equation}
+\end{enumerate}
+\end{thm}
+
+\subsection{主$G$束}
+
+\begin{dfn}
+  $G$をLie群とし、$X$には$G$が右作用し、$Y$には$G$が左作用しているとする。
+  このとき、バランス積（balanced product）$X\times_G Y$とは、
+  直積$X\times Y$を同値関係$(xg,y)\sim(x,gy)$（$g\in G$）で割ったものである。
+\end{dfn}
+
+\begin{dfn}
+$G$をLie群とする。
+多様体$M$上の主$G$束とは、ファイバー束$P\lra M$と右作用$P\times G\lra P$の組であって、
+$G$の$P$への作用は各ファイバーを保ち、かつ、各ファイバー$P_x$（$x\in M$）へ自由かつ可移的に
+作用するもののことである。
+\end{dfn}
+
+\begin{thm}
+  \label{thm:push-principal-bundle-along-group-hom}
+  $f \colon G \lra H$をLie群の射とする。また、$P$を多様体$M$上の主$G$束とする。
+  $H$には$G$の作用が$g\cdot h = f(g)h$によって定める。
+  \begin{enumerate}
+    \item このとき、$P\times_G H$には$[(p,h)]\cdot h' = [(p,hh')]$によって$H$の右作用が定まり、
+    これにより$P\times_G H$は多様体$M$上の主$H$束になる。
+    \item $f$がコホモロジー群に誘導する写像
+    \begin{equation}
+      H^1(M,G)\stackrel{f_*}{\lra}H^1(M,H)
+    \end{equation}
+    により$P$のコホモロジー類は$P\times_G H$のコホモロジー類にうつる。
+    \item $Q$を主$H$束とする。
+    写像$\varphi\colon P\lra Q$が$f$同変であるとは、任意の$g \in G$と$x \in P$について
+    $\varphi(x\cdot g) = \varphi(x)\cdot f(g)$が成り立つことをいう。
+    このとき、$P\times_G H$から$Q$への主$H$束としての同型写像
+    の全体と、$P$から$Q$への$f$同変写像の全体は自然に一対一対応する。
+  \end{enumerate}
+\end{thm}
+
+\begin{rem}
+\label{rem:principal-bundle-pullback-to-self}
+$M$を多様体, $G$をLie群, $P \lra M$を主$G$束とする.
+このとき, $P$を射影$P \lra M$で引き戻すことで得られる主$G$束
+\begin{equation}
+P \times_M P \stackrel{\pr_1}{\lra} P
+\end{equation}
+には, 自然な切断
+\begin{equation}
+P \lra P \times_M P; \quad p \lmt (p, p)
+\end{equation}
+が存在する.
+従って, $P \times_M P$は自明束であり, 自明化写像は
+\begin{equation}
+  P \times G \isolra P \times_M P; \quad (p, g) \lra (p,\ p \cdot g)
+\end{equation}
+によって与えられる.
+\end{rem}
+
+\subsection{付随束}
+
+\begin{dfn}
+$M$を多様体, $G$をLie群, $P \lra M$を主$G$束とする.
+また, $V$を$G$の有限次元表現とする.
+このとき、射影$P \lra M$から導かれる自然な写像$P \times_G V \lra M$により,
+バランス積$P \times_G V$は$M$上のベクトル束になる。
+このベクトル束を主$G$束$P$と表現$V$に付随するベクトル束という.
+付随束$P \times_G V$をより短く$P(V)$と書くことがある.
+\end{dfn}
+
+\begin{thm}
+  \label{thm:hom-between-associated-bundles}
+  $M$を多様体, $G$をLie群, $P \lra M$を主$G$束とする.
+  また, $V,W$を$G$の有限次元表現とする.
+  このとき、線形写像の空間$\Hom(V,W)$も自然に$G$の表現である
+  （作用は$g\cdot f = v \lmt g\cdot f(g^{-1}\cdot v)$により定まるものである）。
+  よってベクトル束$P\times_G \Hom(V,W)$が考えられる。
+  この記号のもとで、自然なベクトル束の同型
+  \begin{equation}
+    P\times_G \Hom(V,W) \isolra \Hom_M(P\times_G V,P\times_G W)
+  \end{equation}
+  が存在する（右辺は$M$上のベクトル束の圏における$\Hom$対象を表す）。
+\end{thm}
+
+\begin{rem}
+$M$を多様体, $G$をLie群, $P \lra M$を主$G$束, $V$を$G$の有限次元表現とする.
+$s \colon M \lra P$を$P$の切断とするとき, 次のような$P(V)$の自明化写像が得られる:
+\begin{equation}
+M \times V \isolra P(V); \quad (x, v) \lmt [(s(x), v)].
+\end{equation}
+特に, 自明束に付随するベクトル束は自明である.
+\end{rem}
+
+\begin{exa}
+フレーム束.
+テンソル束.
+\end{exa}
+
+\begin{thm}
+\label{pullback-of-associated-bundle-to-total-space-is-trivial}
+$M$を多様体, $G$をLie群, $P \lra M$を主$G$束, $V$を$G$の有限次元表現とする.
+このとき,
+射影$P \lra M$により付随束$P(V)$を引き戻して得られる$P$上のベクトル束には,
+次のような自然な自明化写像が存在する.
+\begin{equation}
+\label{eq:associated-vector-bundle-pullback-to-principal-bundle}
+P \times V \isolra P \times_M P(V); \quad (p, v) \lmt \bigl(p, [(p, v)]\bigr)
+\end{equation}
+\end{thm}
+
+\begin{proof}
+注意\ref{rem:principal-bundle-pullback-to-self}により, 引き戻し$P \times_M P(V)$は,
+主$G$束$P \times_M P \stackrel{\pr_1}{\lra} P$に付随するベクトル束に自然に同型である.
+この主$G$束は注意\ref{rem:principal-bundle-pullback-to-self}により, 自然な自明化が存在する.
+従って, $P \times_M P(V)$にも自然な自明化が存在する.
+これらの自然な自明化写像を組み合わせたものが式
+\ref{eq:associated-vector-bundle-pullback-to-principal-bundle}
+で与えられているものに一致することを確認すれば良い.
+\end{proof}
+
+\begin{dfn}
+$M$を多様体, $G$をLie群, $P \lra M$を主$G$とする.
+微分形式$\omega \in \Omega^k(P)$が水平であるとは,
+任意の$y \in P$と垂直ベクトル$\xi \in \calV_yP$に対し,
+$\iota_\xi\omega = 0$となることをいう.
+水平微分形式の全体は$\Omega_{\mathrm{hor}}^k(P)$と書く.
+\end{dfn}
+
+\begin{rem}
+$P$上のベクトル束$E$に値を持つ微分形式$\omega \in \Omega^k(P, E)$などについても, 同様に水平性を定義する.
+\end{rem}
+
+\begin{dfn}
+\label{definition-representation-valued-form-on-principal-bundle-is-invariant}
+$M$を多様体, $G$をLie群, $P \lra M$を主$G$束,
+$\rho \colon G \lra \GL(V)$を$G$の有限次元表現とする.
+微分形式$\omega \in \Omega^k(P, V)$に対し,
+任意の$g \in G$に対し$r_g^* \omega = \rho(g^{-1})\omega$が成り立つとき,
+$\omega$は$G$不変であるという.
+$G$不変微分形式全体は$\Omega^k_\mathrm{inv}(P, V)$と書く.
+\end{dfn}
+
+\begin{dfn}
+$M$を多様体, $G$をLie群, $P \lra M$を主$G$束,
+$V$を$G$の有限次元表現とする.
+水平かつ$G$不変な微分形式$\omega \in \Omega^k(P, V)$は基礎的であるという.
+基礎的微分形式の全体を$\Omega_{\mathrm{basic}}^k(P, V)$と書く.
+\end{dfn}
+
+\begin{thm}
+\label{basic-form-and-associated-bundle-valued-form}
+$M$を多様体, $G$をLie群, $\pi \colon P \lra M$を主$G$束,
+$\rho \colon G \lra \GL(V)$を$G$の有限次元表現とする.
+このとき, 引き戻し写像
+\begin{equation}
+\Omega^k(M, P(V)) \lra \Omega^k(P, P \times_M P(V)) = \Omega^k(P, V)
+\end{equation}
+(定理\ref{pullback-of-associated-bundle-to-total-space-is-trivial}を用いた)は, 同型
+\begin{equation}
+\Omega^k(M, P(V)) \isolra \Omega^k_{\mathrm{basic}}(P, V); \quad \omega \lra \pi^* \omega
+\end{equation}
+を定める.
+\end{thm}
+
+\begin{proof}
+$\omega \in \Omega^k(M, P(V))$をとる.
+$\eta = \pi^* \omega$とおく.
+$\eta$が水平であることは明らかである.
+$G$不変であることを示す.
+点$y \in P$と$\xi \in T_yP$を任意にとる.
+$v = \eta_y(\xi)$とおく.
+$P \times_M P(V)$と$P \times V$の同型が
+\begin{equation}
+  P \times V \isolra P \times_M P(V); \quad (p, v) \lmt (p, [(p, v)])
+\end{equation}
+で与えられていたことを用いると, 等式$v = \eta_y(\xi)$は
+\begin{equation}
+\omega_{\pi(y)}\bigl(d\pi(\xi)\bigr) = [(y, v)]
+\end{equation}
+を意味することがわかる.
+同様にして, $w = \eta_{yg}\bigl(dr_g(\xi)\bigr)$とおけば,
+\begin{equation}
+\omega_{\pi(yg)}\bigl((d\pi\circ dr_g)(\xi)\bigr) = [(yg, w)]
+\end{equation}
+すなわち,
+\begin{equation}
+\omega_{\pi(y)}\bigl(d\pi(\xi)\bigr) = [(yg, w)]
+\end{equation}
+を意味している.
+よって, $[(y, v)] = [(yg, w)] \in P \otimes_G V$が得られ,
+これより$w = \rho(g^{-1})v$となる.
+よって,
+\begin{equation}
+  (r_g^*\eta)(\xi) = \eta_{yg}\bigl(dr_g(\xi)\bigr) = \rho(g^{-1}) \eta_y(\xi)
+\end{equation}
+すなわち
+\begin{equation}
+r_g^* \eta = \rho(g^{-1})\eta
+\end{equation}
+がわかった.
+これは$\eta$が$G$不変であることを示している.
+
+以上で, 写像
+$\Omega^k(M, P(V)) \lra \Omega^k_{\mathrm{basic}}(P, V)$
+が定まることは示された.
+これが全単射であることを示そう.
+微分形式の貼り合わせ議論(詳細略)より, $P$が自明束$M \times G \lra M$の場合に示せば良い.
+これは明らかである.
+\end{proof}
+
+\subsection{Maurer-Cartan形式}
+\begin{dfn}
+$G$をLie群とする.
+$G$上のMaurer-Cartan形式$\omega \in \Omega^1(G, \frakg)$とは,
+\begin{enumerate}
+\item
+左不変である.
+つまり, 任意の$h \in G$に対し, $l_h^* \omega = \omega$が成り立つ.
+\item
+$\omega \in \Omega^1(G, \frakg)$が定めるベクトル束の射
+\begin{equation}
+\omega \colon TG \lra G \times \frakg
+\end{equation}
+の原点での値
+\begin{equation}
+\omega(e) \colon T_eG = \frakg \lra \frakg
+\end{equation}
+は恒等写像である.
+\end{enumerate}
+という2条件を満たす唯一の微分形式である.
+\end{dfn}
+
+\begin{lem}
+群$G = \GL_n(\bbR)$のMaurer-Cartan形式$\omega \in \Omega^1(G, \Mat_n(\bbR))$の具体的な表示について考える.
+任意の元$g \in G$に対し, 標準的な同一視$T_gG = \Mat_n(\bbR)$が存在する.
+この同一視のもとで, Maurer-Cartan形式$\omega$の$g \in G$での値
+\begin{equation}
+\omega(g) \in T_gG \lra T_eG
+\end{equation}
+は, 行列$g^{-1}$の左からの乗算
+\begin{equation}
+g^{-1} \cdot - \colon \Mat_n(\bbR) \lra \Mat_n(\bbR)
+\end{equation}
+に等しい.
+\end{lem}
+
+\begin{proof}
+Maurer-Cartan形式の定義の条件1より,
+\begin{equation}
+\omega(g) = l_{g^{-1}}^* \omega(e) = \omega(e) \circ (dl_{g^{-1}})_g
+\end{equation}
+であり, さらに定義の条件2を用いると,
+\begin{equation}
+\omega(g) = (dl_{g^{-1}})_g
+\end{equation}
+である.
+最後に, $(dl_{g^{-1}})_g \colon T_gG \lra T_eG$は$g^{-1}$の左からの乗算と同一視されることは容易にわかる.
+\end{proof}
+
+\begin{lem}
+Lie群の埋め込み$i \colon G \lra G'$を考える.
+Maurer-Cartan形式$\omega \in \Omega(G', \frakg')$の引き戻し$i^*\omega \in \Omega(G, \frakg')$は$\frakg$に値をとり, $G$のMaurer-Cartan形式に等しい.
+\end{lem}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{thm}
+Lie群の埋め込み$g \colon G \lra \GL_n(\bbR)$を考える.
+単射$dg_e \colon \frakg \lra T_{e}\GL_n(\bbR) = \Mat_n(\bbR)$によって, $\frakg$の元を行列であるとみなす.
+このとき, $G$のMaurer-Cartan形式$\omega$の$x \in G$での値
+\begin{equation}
+\omega(x) \colon T_xG \lra \frakg
+\end{equation}
+は,
+\begin{equation}
+\xi \lmt g(x)^{-1} dg_x(\xi)
+\end{equation}
+に等しい.
+すなわち,
+\begin{equation}
+\omega(x) = g(x)^{-1} dg_x
+\end{equation}
+である.
+\end{thm}
+
+\begin{proof}
+ここまでの補題より明らかである.
+\end{proof}
+
+\begin{rem}
+\label{rem:remark-on-notation-of-Maurer-Cartan-form}
+上の定理より, 群$G$の元を変数$g$で表している文脈で, Maurer-Cartan形式を単に$g^{-1}dg$と書くことがある.
+また, 多様体$M$からLie群への射$g \colon X \lra G$がある状況で, $G$のMaurer-Cartan形式の$X$への引き戻しを単に$g^{-1}dg$と書くことがある.
+\end{rem}
+
+\subsection{Ehresmann接続}
+
+\begin{dfn}[接続]
+$M$を多様体とし、$E$は$M$上の$F$をファイバーとするファイバー束とする。
+$\calV \subset TE$を垂直部分ベクトル束とする。
+$M$上のEhresmann接続、あるいは単に接続とは、水平部分ベクトル束と呼ばれる部分束$\calH \subset TE$であって、$TE = \calH \oplus \calV$を満たすもののことをいう。
+\end{dfn}
+
+\begin{lem}
+$M$を多様体とし、$\pi \colon E \lra M$を$F$ファイバー束とする.
+$\calH \subset TE$を$E$の接続とする.
+このとき, 各$y \in E$に対し, 線形写像$d\pi_y \colon \calH_y \lra T_{\pi(y)}M$は同型である.
+\end{lem}
+
+\begin{proof}
+明らかである.
+\end{proof}
+
+\begin{dfn}[自明な接続]
+$E$, $F$を多様体とする.
+$E$上の自明なファイバー束$E \times F \lra E$を考える.
+このとき$E$には,
+$p_F^* TF \subset TE$を水平部分ベクトル束とする自然な接続が存在する.
+この接続を$E$上の自明な接続という.
+\end{dfn}
+
+\begin{dfn}[平坦接続]
+多様体$M$上の$F$ファイバー束$E$を考える.
+$E$上のある接続$\calH \subset TE$が平坦であるとは, 任意の$x \in M$に対し, ある$x$の開近傍上で$\calH$が自明であることをいう.
+\end{dfn}
+
+\begin{dfn}[持ち上げ]
+$M$を多様体, $\pi \colon E \lra M$を$F$ファイバー束とする.
+$\calH \subset TM$を$E$の接続とする.
+\begin{enumerate}
+\item
+点$y \in E$をとり、$x = \pi(y)$とおく.
+ベクトル$\xi \in T_xM$に対し, 同型$d\pi_y \colon \calH_y \isolra T_xM$で対応する元
+$\xi^* \in \calH_y \subset T_yE$を考える.
+これを接続$\calH$による$\xi$の持ち上げという.
+\item
+$X \in \frakX(M)$をベクトル場とする.
+このとき, 点$y \in E$に対して$X_{\pi(y)}^* \in T_yE$を対応させるベクトル場$X^* \in \frakX(E)$が唯一存在する.
+これを$X$の持ち上げという.
+\item
+点$y \in E$をとり, $x = \pi(y)$とおく.
+$x$を始点とする道$\gamma \colon [0,1] \lra M$を考える.
+このとき, $\gamma$の持ち上げ$\gamma^*$とは, 次の初期値付き常微分方程式の解のことである:
+\begin{equation}
+\frac{d\gamma^*}{dt} = \gamma'(t)^*, \quad
+\gamma^*(0) = y.
+\end{equation}
+\end{enumerate}
+\end{dfn}
+
+\begin{rem}
+ベクトル場$X$の持ち上げ$X^*$が再び滑らかであることは, (略)
+$\calH$が部分ベクトル束であることから従う.
+部分ベクトル束の定義はそれほど単純でなかったことに注意.
+\end{rem}
+
+\begin{lem}
+$E$を多様体, $\pi \colon E \lra M$を$F$ファイバー束とし,
+$\calH \subset TE$を接続とする.
+また, $\gamma$を$E$内の道し、その持ち上げを$\gamma^*$とする.
+このとき, $\pi \circ \gamma^* = \gamma$が成り立つ.
+\end{lem}
+
+\begin{proof}
+道$\pi \circ \gamma^* \colon [0,1] \lra M$は, 初期値付き常微分方程式
+\begin{equation}
+\frac{d(\pi \circ \gamma^*)}{dt} = \gamma'(t), \quad
+(\pi \circ \gamma^*)(0) = \gamma(0)
+\end{equation}
+の解である.
+一方, $\gamma$もこの常微分方程式の解であるから, 初期値付き常微分方程式の解の一意性より, $\pi \circ \gamma^* = \gamma$が成り立つ.
+\end{proof}
+
+\begin{dfn}[平行移動]
+点$y \in E$および$\pi(y)$を始点とする$M$内の道$\gamma$を考える.
+$\gamma$の終点を$x$とする.
+このとき、持ち上げ$\gamma^*$の終点$\gamma^*(1) \in E$を$y$の$\gamma$に沿った平行移動（あるいは平行移動の結果）という.
+\end{dfn}
+
+\begin{thm}
+$M$を多様体, $\pi \colon E \lra M$を$F$ファイバー束とする.
+また, $\calH \subset TE$を接続とする.
+このとき, 次は同値である.
+\begin{enumerate}
+\item
+$\calH$は平坦である.
+\item
+任意の$y \in E$について, $\pi(y)$を始点とする道$\gamma$に沿った$y$の平行移動の結果は, $\gamma$のホモトピー類にしかよらない.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+よくある持ち上げについての議論から(詳細略), 次の補題に帰着される.
+\end{proof}
+
+\begin{lem}
+単連結な多様体$M$上の自明な$F$ファイバー束$\pi \colon E \lra M$を考える.
+$\calH \subset TE$を接続とする.
+このとき, 次は同値である.
+\begin{enumerate}
+\item $E$は自明な$F$ファイバー束であり, 接続$\calH$は自明である.
+\item 任意の$y \in E$について, $\pi(y)$を始点とする道$\gamma$に沿った$y$の平行移動の結果は, $\gamma$によらない.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+条件2を仮定する.
+点$x \in M$を固定する.
+また, 同一視$\pi^{-1}(x) = F$を一つ固定する.
+このとき, 点$y \in E$に対し, $\pi(y)$から$x$への道$\gamma$を任意にとり,
+$(\pi(x), \gamma^*(1)) \in M \times \pi^{-1}(x) = M \times F$を対応させることで,
+写像$E \lra M \times F$が定まる.
+これが同型であること, および$E$のファイバー束としての自明化を与えることが示せる.
+この同型で接続$\calH$をファイバー束$E \times F$にコピーしたものも$\calH$と書くことにする.
+これについて$\calH = p_E^{-1}TE$を示せばよい.
+接続$\calH$は, $M$の道$\gamma$の$(x, f)$を始点とする持ち上げ$\gamma^*$が
+\begin{equation}
+[0, 1] \lra E;\quad t \lmt (\gamma(t), f)
+\end{equation}
+で与えられるという性質を持っている.
+これより, 任意のベクトル$\xi \in T_xM$の持ち上げ$\xi^* \in T_{(x, f)}E$は$(\xi, 0) \in T_xM \oplus T_fF = T_{(x,f)}E$であることがわかる.
+よって主張が従う.
+\end{proof}
+
+\begin{dfn}(曲率)
+$M$を多様体, $\pi \colon E \lra M$を$F$ファイバー束とする.
+また, $\calH \subset TE$を接続とする.
+$p_\calV \colon TE \lra \calV$, $p_\calH \colon TE \lra \calH$をそれぞれ接続$\calH$から定まる射影とする.
+このとき, $X, Y \in \frakX(E)$に対し,
+\begin{equation}
+  R(X,Y) = p_\calV[p_\calH X, p_\calH Y] \in \Gamma(E, \calV)
+\end{equation}
+と定める.
+この対応$R(-,-)$は, 微分形式
+\begin{equation}
+  R \in \Omega^2(E, \calV)
+\end{equation}
+を定めている.
+これを接続$\calH$の曲率という.
+\end{dfn}
+
+\begin{thm}
+$M$を多様体, $\pi \colon E \lra M$を$F$ファイバー束とする.
+また, $\calH \subset TE$を接続とし,
+$R \in \Omega^2(E, \calV)$を曲率とする.
+このとき, 次は同値である.
+\begin{enumerate}
+\item
+$P$は平坦.
+\item
+$R = 0.$
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+\subsection{主$G$束の接続}
+\begin{dfn}[主$G$束の接続]
+$M$は多様体, $G$はLie群であるとする.
+主$G$束$P \lra M$上の接続$\calH$とは,
+$G$ファイバー束としての接続$\calH \subset TP$であって, 条件
+\begin{equation}
+\forall g \in G, \forall y \in P, \quad
+(dr_g)_y \calH_y = \calH_{y \cdot g}
+\end{equation}
+を満たすもののことをいう.
+\end{dfn}
+
+\begin{rem}
+$M$を多様体, $G$をLie群,
+$P \lra M$を主$G$束とする.
+\begin{enumerate}
+\item
+各点$y \in P$について,
+作用$y \cdot - \colon G \lra y \cdot G \subset P; g \lmt y \cdot g$
+は同型$d(y \cdot -)_e \colon \frakg \isolra \calV_y$を定める.
+\item
+1の同型は, 垂直部分ベクトル束$\calV \subset TP$と自明なベクトル束$M \times \mathfrak{g}$の同型を定める.
+\item
+任意の$\xi \in \frakg$に対し, 垂直ベクトル場
+\begin{equation}
+M \lra M \times \frakg \cong \calV; x \lmt (x, \xi)
+\end{equation}
+を$X_\xi$と書く.
+\end{enumerate}
+\end{rem}
+
+\begin{dfn}[接続形式]
+$M$を多様体, $G$をLie群,
+$P \lra M$を主$G$束とする.
+また$\calH \subset TP$を接続とする.
+このとき, 自然なベクトル束の射
+\begin{equation}
+TP \lra TP / \calH = \calV \cong M \times \frakg
+\end{equation}
+が定まるので, 自然な微分形式
+\begin{equation}
+  \omega \in \Omega^1(P, \frakg)
+\end{equation}
+が定まる.
+これを接続$\calH$の接続形式という.
+\end{dfn}
+
+\begin{thm}
+\label{principal-bundle-connection-form-characterization}
+$M$を多様体, $G$をLie群,
+$P \lra M$を主$G$束とする.
+このとき, $P$の接続の接続形式$\omega \in \Omega^1(P, \frakg)$は次の条件を満たす.
+\begin{enumerate}
+\item
+任意の$\xi \in \frakg$に対し, $\omega(X_\xi) = \xi$.
+\item
+任意の$g \in G$に対し,
+$ r_g^* \omega = \Ad_{g^{-1}} \omega$.
+\end{enumerate}
+逆に, 上の条件を満たす$\omega \in \Omega^1(P, \frakg)$が与えられたとき, これはある唯一の接続の接続形式である.
+\end{thm}
+
+\begin{rem}
+定義
+\ref{definition-representation-valued-form-on-principal-bundle-is-invariant}
+によると, 条件2は, $G$の随伴表現に関して$\omega$が不変であることを主張している.
+\end{rem}
+
+\begin{proof}
+$\calH \subset TP$を接続とし, $\omega \in \Omega^1(P, \frakg)$を接続形式とする.
+これが条件1を満たすことは明らかである.
+条件2を満たすことを示す.
+まず, 任意の$g \in G$と$y \in P$に対し,
+\begin{equation}
+\xymatrix{
+G \ar[d]_-{g^{-1} \cdot - \cdot g} \ar[rr]^-{y \cdot -} && P \ar[d]^-{r_g} \\
+G \ar[rr]_-{y \cdot g \cdot -} && P
+}
+\end{equation}
+は可換であるから, 図式
+\begin{equation}
+\xymatrix{
+\frakg \ar[d]_-{\Ad_{g^{-1}}} \ar[rr]^-{d(y \cdot -)_e} && \calV_y \ar[d]^-{(dr_g)_y} \\
+\frakg \ar[rr]_-{d(y \cdot g \cdot -)_e} && \calV_{y \cdot g}
+}
+\end{equation}
+も可換である.
+よって, 可換図式
+\begin{equation}
+\label{connection-form-adjunction-diagram}
+\xymatrix{
+\frakg \ar[d]_-{\Ad_{g^{-1}}} \ar[rr]_-{d(y \cdot -)_e} && \calV_y \ar[d]_-{(dr_g)_y} & T_yP \ar[d]^-{(dr_g)_y} \ar[l] \ar@/_10pt/[lll]_{\omega(y \cdot g)}\\
+\frakg \ar[rr]^-{d(y \cdot g \cdot -)_e} && \calV_{y \cdot g} & T_{y \cdot g}P \ar[l] \ar@/^10pt/[lll]^{\omega(y)}
+}
+\end{equation}
+が得られる.
+これは条件2の等式に他ならない.
+
+逆に, 条件1と条件2を満たす微分形式$\omega \in \Omega^1(P, \frakg)$が与えられたとする.
+これはベクトル束の射$\omega \colon TP \lra M \times \frakg$を定める.
+条件1よりこれは全射であり, 従って核$\calH = \Ker \omega \subset TP$は部分ベクトル束である.
+さらに, 点$y \in P$におけるベクトルで$\calV_y \cap \calH_y$の元であるようなものを考える.
+これは$\calV_y$の元なので, ある$\xi \in \frakg$を用いて$X_{\xi}(y)$と表示することがでる.
+さらに$\calH_y$の元であることから$\omega(X_{\xi}(y)) = 0$である.
+条件1を用いることで$\xi = 0$が得られる.
+よって$\calV_y \cap \calH_y = 0$であり, $\calH \oplus \calV = TP$であることがわかった.
+よって, $\calH \subset TP$はファイバー束としての接続である.
+最後に, 図式(\ref{connection-form-adjunction-diagram})において, 左側の四角形は常に可換, 大きな四角形は条件2より可換であり, $d(y \cdot -)_e$および$d(y\cdot g \cdot -)_e$が同型であることから, 右の四角形が可換となる.
+この右の四角形の2つの水平方向の射の核をとることで, $(dr_g)_y \calH_y = \calH_{y \cdot g}$が得られる.
+よって$\calH \subset TP$は主$G$束としての$P$の接続である.
+\end{proof}
+
+\begin{thm}
+\label{thm:gauge-field-transformation-formula}
+$M$を多様体, $G$をLie群,
+$P \lra M$を主$G$束とする.
+$G$のMaurer-Cartan形式を$\theta$と書く.
+$\omega$を$P$の接続の接続形式とする.
+$P$の切断$\sigma \colon M \lra P$に対し,
+$\calA_\sigma = \sigma^* \omega \in \Omega^1(M, \frakg)$とおく.
+2つの切断$\sigma, \tau \colon M \lra P$をとり,
+$\sigma$から$\tau$への変換関数を$\varphi_{\sigma\tau}$とする.
+すなわち, $\varphi_{\sigma\tau} \colon M \lra G$は $\tau = \sigma \cdot \varphi_{\sigma\tau}$が成立するような唯一の関数である.
+このとき,
+\begin{equation}
+\label{physicists-expression-of-connection-transformation-law}
+\calA_\tau = \Ad(\varphi_{\sigma\tau})\calA_\sigma + \varphi_{\sigma\tau}^{-1} d\varphi_{\sigma\tau}
+\end{equation}
+が成り立つ.
+ここで, 右辺第2項は, Maurer-Cartan形式の引き戻し$\varphi_{\sigma\tau}^* \theta$を
+表している(注意\ref{rem:remark-on-notation-of-Maurer-Cartan-form}を参照).
+\end{thm}
+
+\begin{proof}
+作用写像$P \times G \lra P; (y, g) \lmt g \cdot y$のことを$\alpha$と書く.
+
+任意の$x \in M$および$\xi \in T_xM$をとる.
+また, $\sigma(x)$, $\tau(x)$, $\varphi_{\sigma\tau}(x)$のことを単に$s$, $t$, $g$と書くことにする.
+微分
+\begin{equation}
+d\alpha_{(s, g)} \colon T_sP \oplus T_gG \lra T_tP
+\end{equation}
+を
+\begin{align}
+  &d\alpha_{(s, g)} = \alpha_1 + \alpha_2, \\
+  &\alpha_1 = d(- \cdot g)_s \colon T_sP \lra T_tP, \\
+  &\alpha_2 = d(s \cdot -)_g \colon T_gG \lra T_tP
+\end{align}
+のように分解する.
+すると,
+$\tau \colon W \lra P$は
+\begin{equation}
+M \stackrel{\sigma \times \varphi_{\sigma\tau}}{\lra} P \times G \stackrel{\alpha}{\lra} P
+\end{equation}
+という合成であるため,
+\begin{equation}
+\label{eq:physicist-representation-of-connection-product-decomposition}
+(\calA_\tau)_x(\xi) =
+(\omega_{t} \circ d\tau_x) \xi =
+\bigl(\omega_{\tau} \circ \alpha_1 \circ d\sigma_x\bigr) (\xi) +
+\bigl(\omega_{\tau} \circ \alpha_2 \circ (d\varphi_{\sigma\tau})_x \bigr) (\xi)
+\end{equation}
+と書くことができる.
+第1項については,
+\begin{equation}
+\bigl(\omega_\tau \circ \alpha_1 \circ d\sigma_x\bigr) (\xi) =
+\bigl(\omega_\tau \circ (dr_g)_s \circ d\sigma_x\bigr) (\xi) =
+(\sigma^* r_g^* \omega)_x (\xi) =
+\Ad_g (\sigma^* \omega)_x (\xi) =
+\Ad_g (\calA_\sigma)_x (\xi)
+\end{equation}
+となる.
+ここで定理\ref{principal-bundle-connection-form-characterization}の1を用いた.
+第2項について調べるために,
+写像
+$\omega_t \circ \alpha_2 \colon T_gG \lra \frakg$
+とMaurer-Cartan形式との関係について考える.
+$T_gG$の元を
+$dl_g\eta \ (\eta \in \frakg)$という形で表示すると,
+ここでの値は
+\begin{equation}
+(\omega_t \circ \alpha_2) (dl_g \eta) =
+(\omega_t \circ d(s \cdot -)_g \circ d(g \cdot -)_e) (\eta) =
+\omega_t \bigl( d(sg \cdot -)_e (\eta) \bigr) =
+\omega_t (X_\eta (sg))
+= \eta
+\end{equation}
+となる.
+ここで最後に定理\ref{principal-bundle-connection-form-characterization}の2を用いた.
+よって, $\omega_t \circ \alpha_2$はMaurer-Cartan形式の$g$での値$\theta_g$に他ならない.
+従って,
+式\ref{eq:physicist-representation-of-connection-product-decomposition}
+の第2項は
+\begin{equation}
+\bigl(\omega_{\tau} \circ \alpha_2 \circ (d\varphi_{\sigma\tau})_x \bigr) (\xi) =
+\bigl(\theta_g \circ (d\varphi_{\sigma\tau})_x\bigr) (\xi) =
+(\varphi_{\sigma\tau}^* \theta_g) (\xi)
+\end{equation}
+となる.
+以上の計算より
+(\ref{physicists-expression-of-connection-transformation-law})が示された.
+\end{proof}
+
+\begin{thm}
+$M$を多様体, $G$をLie群,
+$P \lra M$を主$G$束とする.
+$M$の開被覆$M = \cup_\lambda U_\lambda$および各$U_\lambda$上での切断$\sigma_\lambda \colon U_\lambda \lra P|_{U_\lambda}$が与えられたとする.
+$\varphi_{\lambda \rho} \colon U_\lambda \cap U_\rho \lra G$を$\sigma_\rho$から$\sigma_\lambda$への変換関数とする.
+次の2つの集合を考える.
+\begin{enumerate}
+\item
+$P$上の接続の全体.
+\item
+微分形式の集合$\{ \calA_\lambda \in \Omega^1(U_\lambda, \frakg)\}_\lambda$
+であって,
+任意の$\lambda, \rho$について, $U_\lambda \cap U_\rho$上で
+\begin{equation}
+\calA_\lambda = \Ad(\varphi_{\lambda \rho})\calA_\rho + \varphi_{\lambda \rho}^{-1}d\varphi_{\lambda \rho}
+\end{equation}
+が成り立つものの全体.
+\end{enumerate}
+これらの集合の間には自然な全単射が存在し,
+集合1から集合2への写像は, $\calA_\lambda = \sigma_\lambda^* \omega$によって与えられる.
+\end{thm}
+
+\begin{proof}
+集合1から集合2への写像が定まることは,
+定理\ref{thm:gauge-field-transformation-formula}より従う.
+逆に, 集合2の元$\{\calA_\lambda\}_\lambda$が与えられたとしよう.
+定理\ref{principal-bundle-connection-form-characterization}から容易にわかるように,
+自明束の接続形式は, ある切断の引き戻すことにより, 底空間の$\frakg$値1形式と一対一に対応している.
+よって, $U_\rho$上の自明束$P|_{U_\rho}$上の接続形式$\omega_\rho$であって$\sigma_\rho^* \omega_\rho = \calA_\rho$となるようなものが唯一存在する.
+定理\ref{physicists-expression-of-connection-transformation-law}より $U_\lambda \cap U_\rho$上で,
+\begin{equation}
+\sigma_\rho^* \omega_\lambda =
+\Ad(\varphi_{\lambda \rho})\calA_\rho +
+\varphi_{\lambda \rho}^{-1}d\varphi_{\lambda \rho}
+\end{equation}
+が成り立ち, 集合2の条件より,
+\begin{equation}
+\sigma_\rho^* \omega_\lambda = \calA_\rho
+\end{equation}
+となる.
+すなわち,
+\begin{equation}
+\sigma_\rho^* \omega_\lambda = \sigma_\rho^* \omega_\rho
+\end{equation}
+が成り立つ.
+再び, 接続形式はその引き戻しの結果から一意に定まることを用いると,
+\begin{equation}
+\omega_\lambda = \omega_\rho
+\end{equation}
+が結論される.
+よって, 微分形式の集合$\{ \omega_\lambda \}_\lambda$は貼りあって, $P$上の接続形式すなわち集合1の元を定める.
+\end{proof}
+
+\begin{dfn}
+$M$を多様体, $G$をLie群, $P \lra M$を主$G$束とする.
+$\theta \in \Omega^1(P, \frakg)$を$P$の接続の接続形式とする.
+この接続に関して, ベクトル場の水平成分を取り出す写像を
+$h_\theta \colon \frakX(P) \lra \frakX(P)$と書く.
+$V$を$G$の有限次元表現とする.
+このとき,
+\begin{equation}
+\nabla_\theta(X_1, \ldots, X_{k+1}) =
+d\omega(h_\theta(X_1), \ldots, h_\theta(X_{k+1})) \quad (X_1, \ldots, X_{k+1} \in \frakX(P))
+\end{equation}
+より定まる写像
+\begin{equation}
+\nabla_\theta \colon \Omega^k_\mathrm{inv}(P,V) \lra \Omega^{k+1}_\mathrm{basic}(P,V)
+\end{equation}
+を$\theta$に関する共変微分という.
+特に,
+定理\ref{basic-form-and-associated-bundle-valued-form}より, 共変微分は写像
+\begin{equation}
+\Omega^k(M, P(V)) \lra \Omega^{k+1}(M, P(V))
+\end{equation}
+を定めるが, こちらも共変微分と呼び, 同じ記号$\nabla_\theta$で表す.
+\end{dfn}
+
+\begin{proof}
+$G$不変微分形式$\omega \in \Omega^k(P, V)$に対し,
+$\nabla_\theta (\omega)$が基礎的であることは, 次のようにして分かる.
+水平であることは明らかである.
+$G$不変性を示す.
+$r_g \colon P \isolra P$は同型であるから, この同型でベクトル場を押し出す写像
+$dr_g \colon \frakX(P) \isolra \frakX(P)$が定義できる.
+主$G$束の接続の定義より, $dr_g$は水平・垂直方向への直和分解を保つ.
+よって, $h_\theta \circ dr_g = dr_g \circ h_\theta$が成り立つ.
+$X_0, \ldots, X_k \in \frakX(P)$を任意にとる.
+すると, $\omega$の$G$不変性を用いた
+\begin{align*}
+(r_g^* \nabla_\theta \omega)(X_0, \ldots, X_k) &= d\omega \bigl(h_\theta(dr_gX_0),
+  \ldots, h_\theta (dr_gX_k) \bigr) \\ &=
+d\omega \bigl(dr_g (h_\theta X_0),
+  \ldots, dr_g (h_\theta X_k) \bigr) \\ &=
+(r_g^* d\omega)(h_\theta X_0, \ldots, h_\theta X_k) \\ &=
+d (r_g^* \omega)(h_\theta X_0, \ldots, h_\theta X_k) \\ &=
+\rho(g^{-1})d\omega(h_\theta X_0, \ldots, h_\theta X_k) \\ &=
+\rho(g^{-1}) (\nabla_\theta \omega) (X_0, \ldots, X_k)
+\end{align*}
+という計算より, $\nabla_\theta \omega$が$G$不変であることがわかる.
+\end{proof}
+
+\begin{thm}
+\label{covariant-exterior-derivative-explicit-formula-total-space}
+$M$を多様体, $G$をLie群, $P \lra M$を主$G$束とする.
+$\theta \in \Omega^1(P, \frakg)$を$P$の接続の接続形式とする.
+$\rho \colon G \lra \GL(V)$を$G$の有限次元表現とする.
+Lie代数$\frakg$の$V$における表現
+\begin{equation}
+\frakg \otimes V \lra V; \quad \xi \otimes v \lmt d\rho_e(\xi)v
+\end{equation}
+を用いて, 写像
+\begin{equation}
+\label{Lie-algebra-valued-form-wedge-representation-space-valued-form}
+\Omega^\star(P, \frakg \otimes V) \lra \Omega^\star(P, V)
+\end{equation}
+が定まる.
+この写像と外積を合成することで定義される写像
+\begin{equation}
+\Omega^k(P, \frakg) \otimes \Omega^l(P, V) \stackrel{\wedge}{\lra}
+\Omega^{k+l}(P, \frakg \otimes V) \lra
+\Omega^{k+l}(P, V)
+\end{equation}
+のことを$\omega \otimes \eta \lra \omega \wedge_\rho \eta$と書くことにする.
+このとき,
+微分形式$\omega \in \Omega^k_{\mathrm{basic}}(P, V)$に対し,
+\begin{equation}
+\nabla_\theta \omega = d \omega + \theta \wedge_\rho \omega
+\end{equation}
+が成り立つ.
+\end{thm}
+
+\begin{proof}
+まず, 右辺が水平であることを示す.
+点$y \in P$と$y$における任意の垂直ベクトルをとる.
+右作用の微分により得られる同型$\frakg \isolra \calV_yP$によってこれらのベクトル空間を同一視し,
+考えている垂直ベクトルを$\xi \in \frakg$と表記する.
+このとき, $\calL_\xi = i_\xi \circ d + d \circ i_\xi$と$i_\xi$のLeibnitz則より,
+\begin{equation}
+i_\xi (d \omega + \theta \wedge_\rho \omega) =
+\calL_{\xi} \omega - (d \circ i_\xi) \omega +
+i_\xi \theta \wedge_\rho \omega - \theta \wedge_\rho i_\xi \omega
+\end{equation}
+である.
+$\omega$の水平性より,
+\begin{equation}
+i_\xi \omega = 0
+\end{equation}
+である.
+さらに, $\omega$の$G$不変性$r_g^*\omega = \rho(g^{-1})\omega$の両辺を
+$g$について$\xi$方向微分することで, 等式
+\begin{equation}
+\calL_\xi \omega = - (d\rho_e\xi)\omega
+\end{equation}
+が得られる.
+また, 接続形式の条件1より,
+\begin{equation}
+i_\xi \theta = \theta_y(\xi) = \xi
+\end{equation}
+である.
+これらを代入することで,
+\begin{equation}
+i_\xi (d \omega + \theta \wedge_\rho \omega) =
+-(d\rho_e\xi)\omega + \xi\wedge_\rho\omega = 0
+\end{equation}
+を得る.
+
+主張の等式$\nabla_\theta \omega = d \omega + \theta \wedge_\rho \omega$の両辺が共に水平であることがわかったので,
+等式を示すには, 水平ベクトル場$X_0, \ldots, X_k \in \frakX(P)$を任意に取り,
+\begin{equation}
+(\nabla_\theta \omega)(X_0,\ldots,X_k) =
+(d \omega + \theta \wedge_\rho \omega)(X_0,\ldots,X_k)
+\end{equation}
+を示せば良い.
+接続形式$\theta$の定義より, 水平ベクトル場$X_i$に対し$\theta(X_i) = 0$であるから,
+結局,
+\begin{equation}
+(\nabla_\theta \omega)(X_0,\ldots,X_k) =
+d\omega(X_0,\ldots,X_k)
+\end{equation}
+を示せば良い.
+これは明らかである.
+\end{proof}
+
+\begin{thm}
+\label{covariant-derivative-by-connection-form-formula}
+$M$を多様体, $G$をLie群, $P \lra M$を主$G$束とする.
+$\theta \in \Omega^1(P, \frakg)$を$P$の接続の接続形式とする.
+$\rho \colon G \lra \GL(V)$を$G$の有限次元表現とする.
+$\sigma \colon M \lra P$を切断とする.
+$\calA = \sigma^*\theta$とおく.
+切断$\sigma$から得られるベクトル束$P(V)$の自明化
+\begin{equation}
+P(V) \isolra M \times V; \quad [(\sigma(x), v)] \lmt (x, v)
+\end{equation}
+があることに注意する.
+この同型のもとでの共偏微分
+\begin{equation}
+\nabla_\theta \colon \Omega^k(M, V) \lra \Omega^{k+1}(M, V)
+\end{equation}
+は
+\begin{equation}
+\nabla_\theta \omega = d\omega + \calA \wedge_\rho \omega
+\end{equation}
+と表示される.
+\end{thm}
+
+\begin{proof}
+定理(\ref{covariant-exterior-derivative-explicit-formula-total-space})
+の等式の両辺を$\sigma$で引き戻せば良い.
+\end{proof}
+
+\begin{thm}
+  \label{covariant-derivative-Leibnitz-rule}
+  $(\rho, V), (\sigma,W)$をそれぞれ$G$の有限次元表現とする.
+  $\omega \in \Omega^k_\mathrm{basic}(P,V)$および
+  $\eta \in \Omega^l_\mathrm{basic}(P,W)$について,
+  \begin{equation}
+    \nabla_\theta (\omega \otimes \eta) =
+    \nabla_\theta \omega \otimes \eta +
+    (-1)^k \omega \otimes \nabla_\theta \eta
+  \end{equation}
+  が成り立つ.
+\end{thm}
+
+\begin{proof}
+  まず,
+  \begin{equation}
+    \theta\wedge_{\rho\otimes\sigma}(\omega\otimes\eta)=(\theta\wedge_\rho\omega)\otimes\eta +
+    (-1)^k\omega\otimes(\theta\wedge_\sigma\eta)
+  \end{equation}
+  であることが容易に示せる.
+  これと公式\ref{covariant-derivative-by-connection-form-formula}を用いて
+  \begin{align*}
+    \nabla_\theta (\omega \otimes \eta) &=
+    d(\omega \otimes \eta) +
+    \theta\wedge_{\rho\otimes\sigma}(\omega\otimes\eta) \\&=
+    d\omega\otimes\eta + (-1)^k\omega\otimes d\eta +
+    (\theta\wedge_\rho\omega)\otimes\eta +
+    (-1)^k\omega\otimes(\theta\wedge_\sigma\eta) \\&=
+    \nabla_\theta \omega \otimes \eta +
+    (-1)^k \omega \otimes \nabla_\theta \eta
+  \end{align*}
+  と示される.
+\end{proof}
+
+\begin{dfn}
+  $M$を多様体, $G$をLie群, $P \lra M$を主$G$束とする.
+  $\theta \in \Omega^1(P, \frakg)$を$P$の接続の接続形式とする.
+  随伴表現により$\frakg$を$G$の表現であるとみなす.
+  このとき, 接続形式の性質2より,
+  $\theta \in \Omega^1_{\mathrm{inv}}(P, \frakg)$
+  である.
+  よって, $\theta$の共偏微分$\nabla_\theta \theta$が定義され, これは
+  $\Omega^1_{\mathrm{basic}}(P, \frakg) \cong \Omega^1(M, P(\frakg))$の元である.
+  この$\Omega^1_{\mathrm{basic}}(P, \frakg)$
+  あるいは$\Omega^1(M, P(\frakg))$の元である微分形式を, この接続の曲率といい,
+  \begin{equation}
+    \widetilde{F}_\theta \in \Omega^1_{\mathrm{basic}}(P, \frakg)
+  \end{equation}
+  および
+  \begin{equation}
+    F_\theta \in \Omega^1(M, P(\frakg))
+  \end{equation}
+  と書く.
+\end{dfn}
+
+\begin{dfn}
+  \label{Lie-algebra-form-product}
+  $M$を多様体, $\frakg$をLie代数とする.
+  Lie積が誘導する写像
+  \begin{equation}
+  \bigotimes^2 \frakg \lra \frakg; \quad g \otimes h \lra [g, h]
+  \end{equation}
+  が存在する.
+  よって, 積
+  \begin{equation}
+     \Omega^p(M, \frakg) \times \Omega^q(M, \frakg)
+     \stackrel{\wedge}{\lra} \Omega^{p+q}(M, \bigotimes^2\frakg)
+     \lra \Omega^{p+q}(M, \frakg)
+  \end{equation}
+  が定まる.
+  この写像を$(\omega, \eta) \lmt [\omega \wedge \eta]$と書く.
+\end{dfn}
+
+\begin{rem}
+  \label{Lie-algebra-form-product-commutativity}
+  Lie積の交代性と外積の交代性により, 定義\ref{Lie-algebra-form-product}の積の交代性は
+  \begin{equation}
+    [\alpha\wedge\beta]=(-1)^{pq+1}[\beta\wedge\alpha]
+  \end{equation}
+  である.
+\end{rem}
+
+\begin{rem}
+  \label{Lie-algebra-form-product-Lie-identity}
+  $\alpha, \beta, \gamma \in \Omega^1(M,\frakg)$とする.
+  定義\ref{Lie-algebra-form-product}の積について,
+  \begin{equation}
+    [\alpha\wedge[\beta\wedge\gamma]]+
+    [\gamma\wedge[\alpha\wedge\beta]]+
+    [\beta\wedge[\gamma\wedge\alpha]]=0
+  \end{equation}
+  が成り立つ.
+  実際, $\bigwedge TM$の局所枠$(e_i)_i$をとって
+  \begin{equation}
+  \alpha = \alpha^ie_i, \ \beta = \beta^ie_i, \ \gamma = \gamma^ie_i \quad
+  (\alpha^i, \beta^i, \gamma^i \in \frakg)
+  \end{equation}
+  とおけば,
+  \begin{align*}
+    [\alpha\wedge[\beta\wedge\gamma]]&=
+    [\alpha^i,[\beta^j,\gamma^k]]e_i\wedge e_j\wedge e_k \\
+    [\gamma\wedge[\alpha\wedge\beta]]&=
+    [\gamma^k,[\alpha^i,\beta^j]]e_k\wedge e_i\wedge e_j =
+    [\gamma^k,[\alpha^i,\beta^j]]e_i\wedge e_j\wedge e_k \\
+    [\beta\wedge[\gamma\wedge\alpha]]&=
+    [\beta^j,[\gamma^k,\alpha^i]]e_j\wedge e_k\wedge e_i =
+    [\beta^j,[\gamma^k,\alpha^i]]e_i\wedge e_j\wedge e_k \\
+  \end{align*}
+  であるから, これらの和は
+  \begin{equation}
+    \bigl(
+    [\alpha^i,[\beta^j,\gamma^k]]+
+    [\gamma^k,[\alpha^i,\beta^j]]+
+    [\beta^j,[\gamma^k,\alpha^i]]
+    \bigr)
+    e_i\wedge e_j \wedge e_k = 0
+  \end{equation}
+  となる.
+\end{rem}
+
+\begin{thm}
+\label{Cartan-structure-equation}
+  $M$を多様体, $G$をLie群, $P \lra M$を主$G$束とする.
+  $\theta \in \Omega^1(P, \frakg)$を$P$の接続の接続形式とする.
+  曲率形式について, 公式
+\begin{equation}
+  \widetilde{F}_\theta = d\theta + \frac{1}{2}[\theta \wedge \theta]
+\end{equation}
+が成り立つ.
+\end{thm}
+
+\begin{proof}
+左辺は定義から明らかに水平的である.
+一方, 右辺も水平的であることは, 次の計算によって確かめられる.
+任意の点$y \in P$をとり,
+同型$d(y \cdot -)_e \colon \frakg \isolra T_yP$によりこれらのベクトル空間を同一視する.
+$\xi \in \frakg$をとる.
+このとき, まず
+\begin{equation}
+i_\xi d\theta = \calL_\xi \theta - d i_\xi \theta
+= \calL_\xi \theta
+\end{equation}
+である.
+さらに, $\theta$の$G$不変性
+$r_g^* \theta = \Ad_{g^{-1}}\theta$の両辺を$g$について$\xi$方向微分することで, 最終的に等式
+\begin{equation}
+  i_\xi d\theta = \calL_\xi \theta = \ad_{-\xi} \theta = [-\xi, \theta] = -[\xi, \theta]
+\end{equation}
+を得る.
+一方,
+\begin{equation}
+  i_\xi [\theta \wedge \theta]
+  = [i_\xi \theta, \theta] - [\theta, i_\xi \theta]
+  = 2[i_\xi \theta, \theta] = 2[\xi, \theta]
+\end{equation}
+である.
+ここで, 挿入演算子$i_\xi$が$-1$次の微分作用素であることと,
+接続形式の条件1を用いた.
+以上の結果を用いると, 公式の右辺に$i_\xi$を作用させると$0$になること, すなわち水平性が示される.
+
+公式の両辺が水平的であることが示されたので, 両辺を水平ベクトル場で評価した値が等しいことを確認すればよいが, これは共偏微分と曲率形式の定義から明らかである.
+\end{proof}
+
+\begin{thm}
+  $M$を多様体, $G$をLie群, $P \lra M$を主$G$束とする.
+  $\theta \in \Omega^1(P, \frakg)$を$P$の接続の接続形式とする.
+  $\sigma \colon M \lra P$を切断とし,
+  $\calA = \sigma^*\theta$とおく.
+  切断$\sigma$の存在により, $G$の随伴表現に付随するベクトル束$P(\frakg)$には自然な自明化が存在する.
+  これにより$F_\theta$は自明ベクトル束$M \times \frakg$に値を持つとみなすことができる.
+  この状況で, 曲率形式について公式
+\begin{equation}
+  F_\theta = d\calA + \frac{1}{2}[\calA \wedge \calA]
+\end{equation}
+が成り立つ.
+\end{thm}
+
+\begin{proof}
+定理\ref{Cartan-structure-equation}の両辺を$\sigma$で引き戻せばよい.
+\end{proof}
+
+\begin{thm}
+  $M$を多様体, $G$をLie群, $P \lra M$を主$G$束とする.
+  $\theta \in \Omega^1(P, \frakg)$を$P$の接続の接続形式とする.
+このとき, Bianchiの恒等式
+\begin{equation}
+\nabla_\theta \widetilde{F}_\theta = 0, \quad
+\nabla_\theta F_\theta = 0
+\end{equation}
+が成り立つ.
+\end{thm}
+
+\begin{proof}
+後者は前者より従うので, 前者を示す.
+まず, $\alpha \in \Omega^k(P, \frakg)$, $\beta \in \Omega^k(P, \frakg)$について
+$\alpha\wedge_\mathrm{ad}\beta = [\alpha, \beta]$であることに注意すると,
+\begin{align}
+\nabla_\theta\widetilde{F}_\theta &=
+d\biggl(d\theta+\frac{1}{2}[\theta\wedge\theta]\biggr) +
+\theta\wedge_\mathrm{ad}\biggl(d\theta+\frac{1}{2}[\theta\wedge\theta]\biggr) \\ &=
+\frac{1}{2}d[\theta\wedge\theta] +
+[\theta\wedge d\theta] +
+\frac{1}{2}[\theta\wedge[\theta\wedge\theta]]
+\end{align}
+である.
+最初の2項については,
+\begin{equation}
+d[\theta\wedge\theta] =
+[d\theta\wedge\theta] - [\theta\wedge d\theta] =
+-2[\theta\wedge d\theta]
+\end{equation}
+より打ち消しあう.
+この計算については注意\ref{Lie-algebra-form-product-commutativity}も参照せよ.
+最後の項については、注意\ref{Lie-algebra-form-product-Lie-identity}より$0$である.
+\end{proof}
+
+\subsection{Yang-Mills方程式}
+$M$を擬Riemann多様体,
+$G$をLie群, $P \lra M$を主$G$束とする.
+\begin{dfn}
+  $\theta \in \Omega^1(P, \frakg)$を$P$の接続の接続形式とし,
+  $F_\theta \in \Omega^2(M, P(\frakg))$をその曲率とする.
+  \begin{enumerate}
+    \item Hodge $\star$作用素
+          \begin{equation}
+            \star \colon \bigwedge^p TM^* \stackrel{\cong}{\lra}
+            \bigwedge^{n-p} TM^*
+          \end{equation}
+          に随伴束$P(\frakg)$をテンソル積して得られるバンドルの同型も$\star$と書く.
+          これにより$\star F_\theta \in \Omega^{n-2}(M, P(\frakg))$
+          が得られる.
+    \item $(,) \colon \frakg \times \frakg \lra \bbR$を随伴作用について不変な内積とする.
+          すなわち
+          \begin{equation}
+            \forall g \in G, \forall \xi, \eta \in \frakg, \quad
+            (\Ad_g(\xi), \Ad_g(\eta)) = (\xi, \eta)
+          \end{equation}
+          が成り立つ.
+          この内積は, 非退化双線形形式
+          \begin{equation}
+            \Omega^p(M, P(\frakg)) \times \Omega^{n-p}(M, P(\frakg))
+            \stackrel{(,)}{\lra} \Omega^n(M, \bbR)
+          \end{equation}
+          を定める.
+          この積も$(,)$と書かれる.
+  \end{enumerate}
+  内積$(,)$に関する接続形式$\theta$のYang-Mills作用$S_{\mathrm{YM}}(\theta)$とは
+  \begin{equation}
+    S_{\mathrm{YM}}(\theta) = \int_M(F_\theta,\star F_\theta)
+  \end{equation}
+  のことである.
+\end{dfn}
+
+以下, $\mathrm{Ad}$不変内積$(,) \colon \frakg \times \frakg \lra \bbR$を固定し,
+これに関するYang-Mills作用を考える.
+
+\begin{thm}
+  接続形式$\theta \in \Omega^1(M,\frakg)$が$S_{\mathrm{YM}}(\theta)$の停留点である
+  必要十分条件は, Yang-Mills方程式
+  \begin{equation}
+    \nabla_\theta \star F_\theta = 0
+  \end{equation}
+  を満たすことである.
+\end{thm}
+
+\begin{proof}
+  接続形式$\theta$とその変分$\theta + \eta$を考える.
+  接続形式の差である$\eta$は基礎的である.
+  これより,
+  共変微分$\nabla_\theta \eta \in \Omega^2_\mathrm{basic}(P,\frakg)$が定義され,
+  公式
+  \begin{equation}
+    \nabla_\theta \eta = d\eta + [\theta, \eta]
+  \end{equation}
+  が成り立つ.
+  これを用いると,
+  \begin{equation}
+    F_{\theta+\eta} = d(\theta+\eta) + \frac{1}{2}[\theta+\eta, \theta+\eta]
+    = F_\theta + \nabla^{\theta}\eta + \frac{1}{2}[\eta,\eta]
+  \end{equation}
+  を得る.
+  Hodge $\star$作用素の性質
+  \begin{equation}
+    \int_M (\alpha, \star\beta) = \int_M (\star\alpha, \beta)
+  \end{equation}
+  および,
+  Leibnitz則\ref{covariant-derivative-Leibnitz-rule}より
+  $\nabla_\theta$についての部分積分の公式が成立することに注意すると,
+  \begin{align*}
+    S_\mathrm{YM}(\theta+\eta) - S_\mathrm{YM}(\theta) &=
+    \int_M (F_\theta, \star\nabla_\theta\eta) +
+    (\nabla_\theta\eta, \star F_\theta) + O(\eta^2) \\ &=
+    2 \int_M (\nabla_\theta\eta, \star F_\theta) + O(\eta^2) \\ &=
+    -2 \int_M (\eta, \nabla_\theta \star F_\theta) + O(\eta^2)
+  \end{align*}
+  となる.
+  よって停留条件はYang-Mills方程式$\nabla_\theta\star F_\theta=0$である.
+\end{proof}
+
+\subsection{Dirac方程式}
+
+\begin{dfn}
+ $M$を符号が$(p,q)$の擬Riemann多様体とし、そのフレーム束を$FM$とする。
+ 普遍被覆写像$\Spin(p,q)\lra\SO(p,q)$を$\pi$と書く。
+ $M$のスピン構造とは、
+ $\Spin(p,q)$主束$SM$と$\pi$同変写像$\lambda \colon SM\lra FM$の
+ 組$(SM,\lambda)$のことである。
+ スピノル構造を持つ多様体において、$\Spin(p,q)$束$SM$はスピノル束と呼ばれる。
+\end{dfn}
+
+\begin{rem}
+  定理\ref{thm:push-principal-bundle-along-group-hom}により、
+  写像$\lambda$により同型$FM = SM \times_{\Spin(p,q)} \SO(p,q)$が与えられている。
+  また、コホモロジー間の写像$\pi_* \colon H^1(M,\Spin(p,q))\lra H^1(M,\SO(p,q))$
+  によって$SM$が定めるコホモロジー類は$FM$が定めるコホモロジー類にうつる。
+\end{rem}
+
+以下では、擬Riemann多様体$M$にはスピン構造$\lambda$が与えられているものとする。
+
+\begin{dfn}
+  \label{dfn:Levi-Civita-on-spinor-bundle}
+  被覆写像$\pi\colon \Spin(p,q)\lra \SO(p,q)$により
+  自然な同型$d\pi\colon\spin(p,q) \lra \so(p,q)$が定まっている。
+  よって、Levi-Civita接続の接続形式$\Theta\in\Omega^1(M,\SO(M))$から、
+  微分形式
+  $d\pi^{-1}(\lambda^*\Theta)\in\Omega^1(SM,\spin(p,q))$
+  が定まる。
+  この微分形式は主$\Spin(p,q)$束$SM$の接続形式であり、
+  対応する接続を$SM$のLevi-Civita接続と呼ぶ。
+\end{dfn}
+
+以下では、$G$をLie群（ゲージ群と呼ばれる）とし、$V$は有限次元複素ベクトル空間であって、
+表現$\rho_C\colon\Cl^{p+q}(\bbR)\lra\End(V)$と$\rho_G\colon G\lra\GL(V)$を持つものとする。
+また、$\Image(\rho_C)$の元と$\Image(\rho_G)$の元は互いに可換であるとする。
+
+$P$を主$G$束とし、主$\Spin(p,q)\times G$束$SM\times_MP$のことを$SP$と書く。
+また、$\Spin(p,q)\times G$表現$V$に付随するベクトル束のことを$SPV$と書く。
+
+\begin{dfn}
+  \label{dfn:Clifford-multiplication}
+  線形写像
+  \begin{equation}
+    \bbR^{p+q} \lra \Cl^{p+q}(\bbR) \stackrel{\rho_C}{\lra} \End(V)
+  \end{equation}
+  はベクトル束の準同型
+  \begin{equation}
+    TM \lra \End_M(SPV)
+  \end{equation}
+  を誘導する（右辺は$SPV$のベクトル束としての自己準同型束である）。
+  具体的には、これは次の写像の合成である。
+  \begin{enumerate}
+    \item
+    スピン構造から得られる同型
+    \begin{equation}
+      TM =
+      FM \times_{\SO(p,q)} \bbR^{p+q} \cong
+      SM \times_{\Spin(p,q)} \SO(p,q) \times_{\SO(p,q)} \bbR^{p+q} =
+      SM \times_{\Spin(p,q)} \bbR^{p+q}.
+    \end{equation}
+    ここで、$\Spin(p,q)$の$\bbR^{p+q}$への作用は
+    $\sigma \cdot v = \pi(\sigma) \cdot v = \sigma \cdot v \cdot \sigma^{-1}$
+    により与えられている。
+    \item
+    包含写像$\bbR^{p+q}\lra\Cl^{p+q}(\bbR)$が誘導する写像
+    \begin{equation}
+      SM \times_{\Spin(p,q)} \bbR^{p+q} \lra
+      SM \times_{\Spin(p,q)} \Cl^{p+q}(\bbR).
+    \end{equation}
+    ここで、$\Spin(p,q)$の$\Cl^{p+q}(\bbR)$への作用は
+    $\sigma \cdot v = \sigma \cdot v \cdot \sigma^{-1}$
+    により与えられている。
+    \item
+    自然な同型
+    \begin{equation}
+      SM \times_{\Spin(p,q)} \Cl^{p+q}(\bbR) =
+      (SM \times_M P) \times_{\Spin(p,q)\times G} \Cl^{p+q}(\bbR).
+    \end{equation}
+    ここで、$\Spin(p,q)$の$\Cl^{p+q}(\bbR)$への作用は
+    $(\sigma,g) \cdot v = \sigma \cdot v \cdot \sigma^{-1}$
+    により与えられている。
+    \item
+    $\rho_C$が誘導する写像
+    \begin{equation}
+      (SM \times_M P) \times_{\Spin(p,q)\times G} \Cl^{p+q}(\bbR) \lra
+      (SM \times_M P) \times_{\Spin(p,q)\times G} \End(V).
+    \end{equation}
+    ここで、$\End(V)$への$\Spin(p,q)\times G$への作用は
+    \begin{equation}
+      (\sigma,g) \cdot f =
+      \rho_C(\sigma) \circ \rho_G(g)
+      \circ f \circ
+      \rho_C(\sigma)^{-1} \circ \rho_G(g)^{-1}
+    \end{equation}
+    により与えられている。
+    $\Cl^{p+q}(\bbR)$と$G$の$V$への作用の可換性により、
+    写像$\rho_C\colon\Cl^{p+q}(\bbR)\lra\End(V)$は
+    $\Spin(p,q)\times G$準同型写像である。
+    \item
+    自然な同型
+    \begin{equation}
+      (SM \times_M P) \times_{\Spin(p,q)\times G} \End(V) =
+      \End_M(SPV).
+    \end{equation}
+    これは定理\ref{thm:hom-between-associated-bundles}により与えられるものである。
+  \end{enumerate}
+  この写像$TM\lra\End_M(SPV)$により定まる積を
+  $TM\otimes_M SPV\lra SPV; v\otimes\varphi\lmt v\cdot \varphi$
+  という記号で書き、Clifford積と呼ぶ。
+  また、計量による同型$TM\cong TM^{\vee}$を用いて、
+  同様に微分形式のClifford積$TM^{\vee}\otimes_M SPV\lra SPV$も定める。
+\end{dfn}
+
+\begin{dfn}
+  $\theta\in\Omega^1(P,\frakg)$を$P$の接続形式とする。
+  このとき、
+  ベクトル束の写像
+  \begin{equation}
+    SPV
+    \stackrel{\nabla_{\Theta\otimes\theta}}{\lra}
+    TM^{\vee}\otimes_M SPV
+    \lra
+    SPV
+  \end{equation}
+  が定まる。
+  ここで、$\Theta\in\Omega^1(SM,\spin(p,q))$は$SM$のLevi-Civita接続であり、
+  1つ目の写像は$SP$上の接続形式$\Theta\otimes\theta$による共偏微分である。
+  2つ目の写像はClifford積である。
+  これをDirac作用素と呼び、$D^\theta$と書く。
+\end{dfn}
+
+
+以下では、正の数$m$を固定する。
+また、$\bbR$線型同型写像
+$V\isolra\overline{V}^\vee; \psi \lmt \overline{\psi}$
+であって、
+$\Cl^{p+q}(\bbR)$の表現としても$G$の表現としても同型であるようなものが
+与えられているとする。
+このとき、ベクトル束の双線型形式
+\begin{equation}
+  SP\overline{V}^\vee \otimes SPV \lra SP\bbC = M \times \bbC;
+  \overline{\psi}\otimes\psi'\lmt\overline{\psi}\psi'
+\end{equation}
+が定まることに注意する。
+
+\begin{dfn}
+  Dirac作用とは、
+  \begin{equation}
+    S_{\mathrm{Dirac}}(\psi,\theta)=\int_M
+    \star \bigl(\overline{\psi}(D^\theta + m)\psi \bigr)
+  \end{equation}
+  のことである。
+\end{dfn}
+
+\begin{thm}
+(Dirac方程式)
+\end{thm}
+
+\begin{dfn}
+  Dirac作用$S_{\mathrm{Dirac}}(\psi,\theta)$のもとで、
+  Dirac場$\psi\in\Gamma(M,SPV)$に伴う電流密度とは、
+  Clifford積$(X,\psi)\lmt X\cdot\psi$と
+  ペアリング$(\overline{\psi},\psi')\lmt\overline{\psi}\psi'$
+  を用いて構成される写像
+  \begin{equation}
+    j \colon P(\frakg) \otimes TM^\vee \lra \bbC\times M;
+    \xi \otimes \omega \lmt \overline{\psi}(\omega\cdot\xi\psi)
+  \end{equation}
+  のことである（$\frakg$は$G$の随伴表現である）。
+  これは$P(\frakg)$の切断にパラメータづけられた$M$上のベクトル場であると見做すことができる。
+\end{dfn}
+
+\begin{thm}
+  $\theta$の変分
+  $\eta \in \Omega^1_{\mathrm{basic}}(P, \frakg)\cong
+  \Omega^1(M, P(\frakg))$について、
+  Dirac作用$S_{\mathrm{Dirac}}(\psi,\theta)$の変分は
+  \begin{equation}
+    S_{\mathrm{Dirac}}(\psi,\theta+\eta)-S_{\mathrm{Dirac}}(\psi,\theta)
+    = \int_M \star (j, \eta)
+  \end{equation}
+  となる。
+\end{thm}

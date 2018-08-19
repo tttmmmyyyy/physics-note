@@ -1,0 +1,423 @@
+\section{量子力学}
+
+\subsection{量子化}
+状態ベクトル$\ket{\psi(t)}$の時間発展方程式は、エルミート演算子$H$を用いて
+\begin{equation}
+  i\frac{d}{dt}\ket{\psi(t)} = H\ket{\psi(t)}
+\end{equation}
+と書ける。
+
+シュレーディンガー方程式を使って、観測量$O$の期待値の運動方程式を求めると、
+\begin{equation}
+  \label{quantum-hamilton-equation-for-expectation}
+  \frac{d}{dt}\braket{\psi(t)|O|\psi(t)} = \braket{\psi(t)|i[O, H]|\psi(t)}
+\end{equation}
+となる。
+ここに現れている積$(A,B) \lmt i[A,B]$は、
+観測量（すなわちエルミート演算子）の空間に定まるLie積であることに注意する。
+
+一方、ハミルトン力学によると、物理量$\calO$の運動方程式は、
+ハミルトニアン$\calH$を用いて
+\begin{equation}
+  \label{hamilton-equation}
+  \frac{d}{dt}\calO = \{\calO, \calH\}
+\end{equation}
+と書くことができる。
+ここで$\{\calA,\calB\}$は物理量$\calA$, $\calB$のポアソン積である。
+これは定義によると、物理量（すなわち相空間上の関数）の空間に定まるLie積であり、
+かつ$\{\calQ_i,\calP_j\}=\delta_{ij}$を満たすものである
+（$\calQ_i$はそれぞれ、$i$番目の力学変数の位置とその正準共役運動量である）。
+明示的には、公式
+\begin{equation}
+  \label{poisson-bracket-formula}
+  \{\calA,\calB\}
+  = \sum_i
+  \biggl(
+  \frac{\partial\calA}{\partial\calQ_i}\frac{\partial\calB}{\partial\calP_i} -
+  \frac{\partial\calA}{\partial\calP_i}\frac{\partial\calB}{\partial\calQ_i}
+  \biggr)
+\end{equation}
+で与えられる。
+特に、位置$\calQ_i$と運動量$\calP_i$の運動方程式は
+\begin{equation}
+  \frac{d\calQ_i}{dt}=\frac{\partial\calH}{\partial\calP_i}, \quad
+  \frac{d\calP_i}{dt}=-\frac{\partial\calH}{\partial\calQ_i}
+\end{equation}
+となる（正準運動方程式）。
+
+古典系があったとき、それを近似的に再現する量子系を構成することを、
+その古典系を量子化（quantize）するという。
+量子化は、より精緻な物理理論を得ようとすることであるから、
+単に論理的な考察だけでは達成できず、いくつかの仮説が必要となる。
+特に、古典系の物理量をどのエルミート演算子に対応させるかを仮定しなくてはならない。
+式(\ref{quantum-hamilton-equation-for-expectation})と(\ref{hamilton-equation})を
+比較することで、エルミート演算子の選び方について重要な指針が得られる。
+\begin{enumerate}
+  \item
+  古典系の一般化位置$\calQ_i$に対応するエルミート演算子$Q_i$と
+  、その正準共役運動量に対応するエルミート演算子$P_i$は、
+  関係$i[Q_i,P_j]=\delta_{ij} \iff [P_i,Q_j]=i\delta_{ij}$
+  を満たすように選ぶべきである。
+  \item
+  古典系におけるハミルトニアンの定義式
+  $\calH=\calH((\calP_i)_i,(\calQ_i)_i)$
+  を与える多項式を$\calH$とするとき、
+  量子系では、$\calH$のある非可換多項式への持ち上げ$H$を用いて
+  $H=H((P_i)_i,(Q_i)_i)$という関係式が成り立つべきである。
+\end{enumerate}
+このルールに基づいて量子化を行なったとしよう。
+公式(\ref{poisson-bracket-formula})の証明と似た考察により、
+非可換多項式$f$に対し、
+\begin{equation}
+i[Q_i,f]=\frac{\partial f}{\partial P_i}, \quad
+i[P_i,f]=-\frac{\partial f}{\partial Q_i}
+\end{equation}
+が示せる
+（両辺が$f$に作用する微分作用素であることから、
+$f=P_j$, $f=Q_j$での場合に成り立つことを確認すれば良い）。
+よって、位置演算子$Q_i$と運動量演算子$P_i$の期待値は、
+次の方程式に従うことが保証される。
+\begin{equation}
+  \frac{d}{dt}\braket{\psi(t)|Q_i|\psi(t)}
+  = \braket{\psi(t)|\partial H / \partial P_i|\psi(t)}, \quad
+  \frac{d}{dt}\braket{\psi(t)|P_i|\psi(t)}
+  = -\braket{\psi(t)|\partial H / \partial Q_i|\psi(t)}
+\end{equation}
+したがって、量子系の位置演算子と運動量演算子の期待値が従う運動方程式は、
+古典系での運動方程式と等しくなる。
+以上の方針による量子化を正準量子化（canonical quantization）という。
+
+% \subsubsection{実状態ベクトル空間の場合}
+% 仮に、量子論の状態ベクトル空間として実ベクトル空間を選んだ場合、どのような理論ができるであろうか。
+% この場合、系の対称変換を表す作用素は、ユニタリではなく、直交行列となる。
+% 特に時間発展演算子は直交行列であり、
+% 直交群のLie群は歪対称行列全体であることから、
+% シュレーディンガー方程式は、歪対称行列$H$を用いて
+% \begin{equation}
+%   \frac{d}{dt}\ket{\psi(t)} = H\ket{\psi(t)}
+% \end{equation}
+% と書かれることになる。
+% 一方、観測量を表す行列は、直交行列によって対角化可能な行列、すなわち対称行列ということなる。
+% 式(\ref{quantum-hamilton-equation-for-expectation})に対応する式は
+% \begin{equation}
+%   \frac{d}{dt}\braket{\psi(t)|O|\psi(t)} = \braket{\psi(t)|[O, H]|\psi(t)}
+% \end{equation}
+% となる。
+% ハミルトン方程式
+% \begin{equation}
+%   \frac{d}{dt}\calO = \{\calO, \calH\}
+% \end{equation}
+% と見比べることで、我々は古典物理量の関係式$\calH=h(\calP,\calQ)$が
+% 演算子の関係式$H=h(P,Q)$に持ち上げられることを期待するが、
+
+\subsection{Green関数}
+力学変数のインデックスの集合を$P$とする。
+ハミルトニアン$H$の固有状態の全体を$\bigl\{ \ket{n} \bigr\}_{n}$と書き、
+状態$\ket{n}$のエネルギー固有値を$E_n$とする。
+これらの固有状態のうち, エネルギーが最小の状態$\ket{0}$は縮退していないと仮定する。
+
+% Green関数は量子力学系を特徴付ける重要な関数である.
+% 実際, ある量子力学系の観測可能な物理量は, すべてGreen関数を元にして計算できることが知られている(Greenの再構成定理).
+% 量子力学系の研究においてはしばしば演算子が登場するため, 計算式に登場する演算子の順序に常に留意しなければいけないといった困難が生じる.
+% そこで, 量子力学系のある物理量を計算するという作業を
+% \begin{enumerate}
+%   \item その系のGreenn関数を求める.
+%   \item Green関数から問題の物理量を計算する公式を作る.
+% \end{enumerate}
+% というステップに分解することで見通しがよくなる.
+% この節ではGreen関数を計算する方法について考察する.
+
+以下では, $\delta \in (0, 2\pi)$を固定したとき,
+写像$te^{-i\delta} \lmt t$によって部分集合
+$e^{-i\delta}\bbR \subset \bbC$を数直線$\bbR$と同一視する.
+これにより, $e^{-i\delta}\bbR$の元の大小関係を定義する.
+また, 関数$f \colon e^{-i\delta}\bbR \lra \bbC$に対し,
+$\tau = te^{-i\delta}$における微分係数
+$\frac{df}{d\tau}(\tau)$とは,
+\begin{equation}
+  \frac{df}{d\tau}(\tau) =
+  \lim_{\varepsilon\to 0}
+  \frac{f((t+\varepsilon)e^{-i\delta})-f(te^{-i\delta})}
+       {(t+\varepsilon)e^{-i\delta}-te^{-i\delta}}
+\end{equation}
+のことである.
+
+\begin{dfn}
+  実数$\delta \in (0, 2\pi)$に対し
+  $n$点Green関数$G_\delta((t_1,p_i),\ldots,(t_n,p_n))$とは、
+  変数$t_1,\ldots,t_n\in e^{-i\delta}\bbR$と
+  力学変数のインデックス$p_1,\ldots,p_n \in P$に対する関数
+  \begin{equation}
+    G_\delta((t_1,p_1),\ldots,(t_n,p_n))=
+    \bra{0}\calT\{Q_{p_1}(t_1)\cdots Q_{p_n}(t_n)\}\ket{0}
+  \end{equation}
+  のことをいう。
+  ここで$Q_{p_i}(t) = e^{iHt}Q_{p_i}e^{-iHt}$である。
+  ただし、以上は形式的な定義である（次の定理を見よ）。
+\end{dfn}
+
+\begin{rem}
+  本来はGreen関数とは場の量子論の文脈で用いられる用語であるが、
+  類似物を量子力学の文脈で議論するために同じ用語を用いている。
+\end{rem}
+
+\begin{thm}
+  $\delta>0$に対し、
+  Green関数$G_\delta((t_1,p_1),\ldots,(t_n,p_n))$は収束し、
+  解析的である。
+\end{thm}
+
+\begin{proof}
+  $H$の固有値は下に有界であることから、
+  $e^{iH\tau}=\sum_n e^{iE_n\tau}\ket{n}\bra{n}$は
+  $\Im \tau > 0$の範囲で絶対収束し、解析的である。
+  形式的には$e^{iH\tau}\ket{0}=\ket{0}$であるから、
+  $t_1 > \cdots > t_n$に対し、
+  \begin{equation}
+    G_\delta((t_1,p_1),\ldots,(t_n,p_n)) =
+    \bra{0}Q_{p_1}e^{-iH(t_1-t_2)}Q_{p_2}\cdots
+    Q_{p_{n-1}}e^{-iH(t_{n-1}-t_n)}Q_{p_n}\ket{0}
+  \end{equation}
+  であり、$\Im(t_i-t_{i-1}) < 0$であるから主張を得る。
+\end{proof}
+
+以下で$J$と書けば, コンパクト台な連続関数
+$J \colon e^{-i\delta}\bbR \times P \lra \bbR$
+のこととする.
+$J$はソース関数と呼ばれる。
+
+\begin{dfn}
+  任意のソース関数$J$と$\tau \in \bbC$に対し,
+  \begin{equation}
+    H^J(\tau) = H + \sum_p J((\tau,p))Q_p
+  \end{equation}
+  とおく.
+\end{dfn}
+
+\begin{dfn}
+  任意の$J$, $\delta \in (0, 2\pi)$と
+  $\tau_0, \tau_1 \in e^{-i\delta}\bbR$に対し,
+  演算子$U^J(\tau_1, \tau_0)$とは次の条件を満たす唯一のものである.
+  \begin{equation}
+    U^J (\tau, \tau) = 1, \quad i\frac{\partial}{\partial\tau_1}U^J(\tau_1, \tau_0) =
+    H^J(\tau_1)U^J(\tau_1, \tau_0).
+  \end{equation}
+  また, $J = 0$のときは$U^J$のことを単に$U$と書く.
+\end{dfn}
+
+\begin{thm}
+  $J = 0$のとき, $\tau_0, \tau_1 \in e^{-i\delta}\bbR$に対し,
+  \begin{equation}
+    U(\tau_1, \tau_0) = e^{-iH(\tau_1 - \tau_0)}
+  \end{equation}
+  である.
+  特に, $Q_p(\tau)=U(0,\tau)Q_pU(\tau,0)$である.
+\end{thm}
+
+\begin{proof}
+  偏微分方程式の解になっていることを確かめれば良い.
+\end{proof}
+
+\begin{thm}
+  \label{thm-functional-differentiation-UJ}
+  $\delta\in (0, 2\pi)$を固定し, 以下の$\sigma$, $\tau_0$, $\tau_1$は$e^{-i\delta}\bbR$の元とする.
+  このとき, $U^J(\tau_1, \tau_0)$の$J$についての汎関数微分は次のようになる.
+  \begin{equation}
+    \frac{\delta U^J(\tau_1, \tau_0)}{\delta J(\sigma,p)} =
+    \begin{cases}
+      -i U^J(\tau_1, \sigma)Q_p U^J(\sigma, \tau_0)
+      & (\sigma \in \bigl(\tau_1, \tau_0)\bigr)\\
+      0
+      & \bigl( \sigma \notin [\tau_0, \tau_1] \bigr)
+    \end{cases}
+  \end{equation}
+\end{thm}
+
+\begin{proof}
+  示すべき等式の右辺を$F_{\tau_1, \tau_0}(\sigma)$とおく.
+  $e^{-i\delta}\bbR \times \{p\}$
+  に台を持つ任意のコンパクト台関数$\Delta J_p (\sigma)$に対し,
+  \begin{equation}
+    \int_{-\infty}^{\infty} \frac{\delta U^J(\tau_1, \tau_0)}{\delta J_p(\sigma,p)} \Delta J_p(\sigma) d\sigma =
+    \int_{-\infty}^{\infty} F_{\tau_1, \tau_0}(\sigma) \Delta J_p(\sigma) d\sigma
+  \end{equation}
+  であることを示せば良い.
+  この左辺には汎関数微分の定義を用い, この右辺には$F_{\tau_1, \tau_0}(\sigma)$の定義を代入することで, 示すべき等式は
+  \begin{equation}
+    \biggl.\frac{d}{d\varepsilon}U^{J+\varepsilon\Delta J_p}(\tau_1,\tau_0)\biggr|_{\varepsilon=0} =
+%    \lim_{\varepsilon\to 0}\frac{U^{J+\varepsilon\Delta J}(\tau_1,\tau_0)-U^J(\tau_1,\tau_0)}{\varepsilon} =
+    -i\int_{\tau_0}^{\tau_1}U^J(\tau_1,\sigma)Q_pU^J(\sigma,\tau_0)\Delta J_p(\sigma)d\sigma
+  \end{equation}
+  となる.
+  $\tau_0$は固定し, この等式の両辺を$\tau_1$の関数であるとみなす.
+  $\tau_1 = \tau_0$のときは両辺ともに$0$であり等しいから, 両辺が同じ一階の常微分方程式を満たすことを示せば良い.
+  実際, 両辺共に関数$f(\tau_1)$についての常微分方程式
+  \begin{equation}
+    i\frac{df}{d\tau_1}(\tau_1) = Q_pU^J(\tau_1,\tau_0)\Delta J(\tau_1)
+     + H^J(\tau_1)f(\tau_1)
+  \end{equation}
+  を満たすことが示される.
+
+  まず, 左辺の$\tau_1$による微分は, (微分と極限の交換および)積の微分法を用いて,
+  \begin{align*}
+    i\frac{d}{d\tau_1}\biggl.\frac{d U^{J+\varepsilon\Delta J_p}(\tau_1,\tau_0)}{d\varepsilon}\biggr|_{\varepsilon=0} &=
+    \biggl.\frac{d H^{J+\varepsilon \Delta J_p}(\tau_1)U^{J+\varepsilon\Delta J_p}(\tau_1,\tau_0)}{d\varepsilon}\biggr|_{\varepsilon=0} \\ &=
+    \biggl.\frac{d H^{J+\varepsilon \Delta J_p}(\tau_1)}{d\varepsilon}\biggr|_{\varepsilon=0}U^{J}(\tau_1,\tau_0) +
+    H^{J}(\tau_1)\biggl.\frac{d U^{J+\varepsilon\Delta J_p}(\tau_1,\tau_0)}{d\varepsilon}\biggr|_{\varepsilon=0} \\ &=
+    \Delta J_p(\tau_1)Q_p U^J(\tau_1,\tau_0) +
+    H^{J}(\tau_1)\biggl.\frac{d U^{J+\varepsilon\Delta J_p}(\tau_1,\tau_0)}{d\varepsilon}\biggr|_{\varepsilon=0}
+  \end{align*}
+  となるのでよい.
+  一方, 右辺の$\tau_1$による微分は, 容易に証明できる公式
+  \begin{equation}
+    \frac{d}{dx}\int_a^{x}f(x, y)dy = f(x,x)+\int_{a}^{x}\frac{\partial f(x,y)}{\partial x}dy
+  \end{equation}
+  を用いて,
+  \begin{align*}
+    &
+    \frac{d}{d\tau_1}\int_{\tau_0}^{\tau_1}U^J(\tau_1,\sigma)Q_pU^J(\sigma,\tau_0)\Delta J_p(\sigma)d\sigma \\
+    &=
+    U^J(\tau_1,\tau_1)Q_pU^J(\tau_1,\tau_0)\Delta J_p(\tau_1)+
+    \int_{\tau_0}^{\tau_1}\frac{dU^J(\tau_1,\sigma)}{d\tau_1}Q_pU^J(\sigma,\tau_0)\Delta J_p(\sigma)d\sigma \\
+    &=
+    Q_pU^J(\tau_1,\tau_0)\Delta J_p(\tau_1)-i
+    H^J(\tau_1)\int_{\tau_0}^{\tau_1}Q_pU^J(\sigma,\tau_0)\Delta J_p(\sigma)d\sigma
+  \end{align*}
+  と計算されるので, こちらもよい.
+\end{proof}
+
+\begin{thm}
+  $\delta \in (0, 2\pi)$を固定し,
+  相異なる$\tau_1, \ldots, \tau_n \in e^{-i\delta}\bbR$をとる.
+  また, 十分に大きい$\tau \in e^{-i\delta}\bbR$をとる($e^{-i\delta}\bbR$を数直線と同一視して順序を与えていることに注意).
+  このとき,
+  \begin{equation}
+    \biggl. i^n \frac{\delta^n U^J(\tau, -\tau)}{\delta J(\tau_1,p_1) \cdots \delta J(\tau_n,p_n)}\biggr|_{J = 0} =
+    U(\tau, 0) \calT \bigl\{ Q_{p_1}(\tau_1)\cdots Q_{p_n}(\tau_n) \bigr\} U(0, -\tau)
+  \end{equation}
+  が成り立つ.
+\end{thm}
+
+\begin{proof}
+  $\tau_1 > \tau_2 > \cdots > \tau_n$であると仮定する.
+  この仮定により一般性は失われない.
+  このとき, 定理\ref{thm-functional-differentiation-UJ}と
+  性質$U(\tau'',\tau)=U(\tau'',\tau')U(\tau',\tau)$より,
+  \begin{align*}
+    \biggl.\frac{\delta^n U^J(\tau, -\tau)}{\delta J(\tau_1,p_1) \cdots \delta J(\tau_n,p_n)}\biggr|_{J = 0} &=
+    U(\tau,\tau_1)Q_{p_1}U(\tau_1,\tau_2)\cdots U(\tau_{n-1},\tau_n)Q_{p_n}U(\tau_n,-\tau) \\ &=
+    U(\tau,0)Q_{p_1}(\tau_1)\cdots Q_{p_n}(\tau_n)U(0,-\tau)
+  \end{align*}
+  となる.
+\end{proof}
+
+\begin{thm}
+  \label{Green-function-generating-formula}
+  $\delta \in (0, 2\pi)$を固定し,
+  $\tau_1, \ldots, \tau_n \in e^{-i\delta}\bbR$をとる。
+  任意の状態$\ket{\alpha}$, $\ket{\beta}$をとる。
+  このとき,
+  \begin{equation}
+    G_\delta((\tau_1,p_1),\ldots,(\tau_n,p_n)) =
+    \lim_{\tau\to e^{-i\delta}\infty}
+    \biggl.
+    \frac{i^n}{\bra{\beta}U(\tau,-\tau)\ket{\alpha}}
+    \frac{\delta^n \bra{\beta}U^J(\tau, -\tau)\ket{\alpha}}{\delta J(\tau_1,p_1)
+    \cdots
+    \delta J(\tau_n,p_n)}
+    \biggr|_{J=0}
+  \end{equation}
+  が成り立つ.
+\end{thm}
+
+\begin{proof}
+まず, 右辺の分母を計算する.
+ハミルトニアンの固有状態は完全系をなすので,
+\begin{align*}
+  \bra{\beta}U(\tau,-\tau)\ket{\alpha} &=
+  \sum_{m,n}\braket{\beta| m}\bra{m}U(\tau,-\tau)\ket{n}\braket{n|\alpha} \\ &=
+  \sum_{m,n}\braket{\beta| m}e^{-2iE_n\tau}\braket{m|n}\braket{n|\alpha} \\ &=
+  \sum_n e^{-2iE_n\tau} \braket{\beta|n}\braket{n|\alpha} \\ &\sim
+  e^{-2iE_0\tau} \braket{\beta|0}\braket{0|\alpha} \quad (\tau\to e^{-i\delta}\infty)
+\end{align*}
+である（最後に$\tau\to e^{-i\delta}\infty$の極限における主要項を取り出した）。
+
+同様に, 右辺の分子について
+\begin{align*}
+  i^n\frac{\delta^n \bra{\beta}U^J(\tau, -\tau)\ket{\alpha}}{\delta J(\tau_1,p_1) \cdots \delta J(\tau_n,p_n)}
+  \biggr|_{J=0} &=
+  \bra{\beta} U(\tau, 0) \calT \bigl\{ Q_{p_1}(\tau_1)\cdots Q_{p_n}(\tau_n) \bigr\} U(0, -\tau)\ket{\alpha} \\ &=
+  \sum_{m,n}\bra{\beta}U(\tau, 0)\ket{m}\bra{m}\calT\bigl\{ Q_{p_1}(\tau_1)\cdots Q_{p_n}(\tau_n)\bigr\}U(0, -\tau)\ket{n}\braket{n|\alpha} \\ &=
+  \sum_{m,n}\bra{\beta}e^{-iE_m\tau}\ket{m}\bra{m}\calT\bigl\{ Q_{p_1}(\tau_1)\cdots Q_{p_n}(\tau_n)\bigr\}e^{-iE_n\tau}\ket{n}\braket{n|\alpha} \\ &=
+  \sum_{m,n}e^{-i(E_m+E_n)\tau}\braket{\beta|m}\braket{n|\alpha}\bra{m}\calT\bigl\{ Q_{p_1}(\tau_1)\cdots Q_{p_n}(\tau_n)\bigr\}\ket{n} \\ &\sim
+  e^{-2iE_0\tau}\braket{\beta|0}\braket{0|\alpha}
+  \bra{0}\calT\bigl\{ Q_{p_1}(\tau_1)\cdots Q_{p_n}(\tau_n)\bigr\}\ket{0} \quad (\tau\to e^{-i\delta}\infty)
+\end{align*}
+である。よって主張を得る。
+\end{proof}
+
+\begin{thm}
+  $q \in \bbR$に対し$\ket{q}$を位置が確定した状態とする.
+  このとき
+  \begin{equation}
+    G_\delta(\tau_1,\ldots,\tau_n) =
+    \lim_{L\to\infty}\lim_{\tau\to e^{-i\delta}\infty}
+    \biggl.
+    \frac{i^n}{\int_{-L}^L\int_{-L}^L dq_idq_f\bra{q_f}U(\tau,-\tau)\ket{q_i}}
+    \frac{\delta^n \int_{-L}^{L}\int_{-L}^{L} dq_idq_f\bra{q_f}U^J(\tau, -\tau)\ket{q_i}}{\delta J(\tau_1) \cdots \delta J(\tau_n)}
+    \biggr|_{J=0}
+  \end{equation}
+  や
+  \begin{equation}
+    G_\delta(\tau_1,\ldots,\tau_n) =
+    \lim_{L\to\infty}\lim_{\tau\to e^{-i\delta}\infty}
+    \biggl.
+    \frac{i^n}{\int_{-L}^{L} dq\bra{q}U(\tau,-\tau)\ket{q}}
+    \frac{\delta^n \int_{-L}^{L} dq\bra{q}U^J(\tau, -\tau)\ket{q}}{\delta J(\tau_1) \cdots \delta J(\tau_n)}
+    \biggr|_{J=0}
+  \end{equation}
+  なども成り立つ.
+\end{thm}
+
+\begin{proof}
+  定理\ref{Green-function-generating-formula}と同様の方法で示すことができる.
+\end{proof}
+
+\subsection{経路積分法}
+\begin{thm}
+  $\delta \in (0, \pi)$および$\tau_f, \tau_i \in e^{-i\delta}\bbR$を固定する.
+  このとき
+  \begin{equation}
+  \bra{q_f}U^J(\tau_f, \tau_i)\ket{q_i} =
+  \int_{\substack{q(\tau_f)=q_f,\\ q(\tau_i)=q_i}}\calD q\calD p
+  \exp\biggl(i\int_{\tau_i}^{\tau_f}d\tau\Bigl[
+  p\frac{dq}{d\tau}-H(p,q)
+  -Jq
+  \Bigr]\biggr)
+  \end{equation}
+  が成り立つ.
+  ここで, $p(\tau)$, $q(\tau)$は数直線$e^{-i\delta}\bbR$上の関数である.
+\end{thm}
+
+\begin{dfn}
+  $\tau_1,\ldots,\tau_n$を複素数とする。
+  \begin{enumerate}
+    \item
+    $n$点Wightman関数とは、関数
+    \begin{equation}
+      W(\tau_1,\ldots,\tau_n)
+      =\bra{0}Q(\tau_1)\cdots Q(\tau_n)\ket{0}
+      =\bra{0}Qe^{-iH(\tau_1-\tau_2)}Q\cdots Qe^{-iH(\tau_{n-1}-\tau_n)}Q\ket{0}
+    \end{equation}
+    のことである。
+    この関数は$\Im(\tau_1)<\cdots<\Im(\tau_n)$の範囲で解析的である。
+    \item
+    $n$点Schwinger関数とは、関数
+    \begin{equation}
+      S(\tau_1,\ldots,\tau_n)=W(-i\tau_1,\ldots,-i\tau_1)
+      =\bra{0}Qe^{-H(\tau_1-\tau_2)}Q\cdots Qe^{-H(\tau_{n-1}-\tau_n)}Q\ket{0}
+    \end{equation}
+    のことである。
+    この関数は$\Re(\tau_1)>\cdots>\Re(\tau_n)$の範囲で解析的である。
+  \end{enumerate}
+\end{dfn}

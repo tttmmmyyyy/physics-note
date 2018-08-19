@@ -1,0 +1,67 @@
+\section{記法}
+
+\begin{dfn}[Minkowski計量]
+  \label{dfn-Minkowski-matrix}
+  $(4,4)$行列$\eta^{\mu\nu}$を
+  \begin{equation}
+    (\eta^{\mu\nu})=
+    \begin{pmatrix}
+      1 & 0 & 0 & 0 \\
+      0 & -1 & 0 & 0 \\
+      0 & 0 & -1 & 0 \\
+      0 & 0 & 0 & -1
+    \end{pmatrix}
+  \end{equation}
+  により定め、Minkowski計量（の成分行列）と呼ぶ。
+\end{dfn}
+
+\begin{dfn}[ベクトル]
+  $4$成分の量（実ベクトル、複素ベクトル、あるいは4つの行列の組など）$x$があるとする。
+  量$x$の最初の成分（「第$0$成分」と呼ぶ）は「時間成分」であり、
+  残りの$3$成分が「空間成分」であるという文脈のともでは、量$x$を$4$元ベクトルと呼ぶ。
+  このとき、$\mathbf{x}$によって$x$の空間成分（$3$成分量）を表す。
+\end{dfn}
+
+\begin{rem}
+  定義\ref{dfn-Minkowski-matrix}の行列の$-1$倍を
+  $(\eta^{\mu\nu})$と書く流儀も存在する。
+\end{rem}
+
+\begin{dfn}[Hermitian形式]
+  $V$を$\bbC$ベクトル空間とするとき、
+  Hermitian形式$\langle,\rangle\colon V\times V \lra \bbC$
+  とは、第一成分について反線型かつ第二成分について線型な写像のことをいう。
+\end{dfn}
+
+\begin{rem}
+  第一成分について線型で第二成分について反線型であるものをHermitian形式と呼ぶ流儀も存在する。
+\end{rem}
+
+\begin{dfn}[Fourier変換]
+  関数$f\colon\bbR^n\lra\bbC$のFourier変換$\hat{f}\colon\bbR^n\lra\bbC$を
+  \begin{equation}
+    \hat{f}(\omega)=\frac{1}{\sqrt{(2\pi)^n}}\int_{\bbR^n}f(x)e^{-i\omega x}dx
+  \end{equation}
+  によって定義する。
+  変数$\omega$は角振動数と呼ばれる。
+  また、
+  関数$\hat{f}\colon\bbR^n\lra\bbC$の逆Fourier変換$f\colon\bbR^n\lra\bbC$を
+  \begin{equation}
+    f(x)=\frac{1}{\sqrt{(2\pi)^n}}\int_{\bbR^n}\hat{f}(\omega)e^{i\omega x}d\omega
+  \end{equation}
+  によって定義する。
+\end{dfn}
+
+\begin{rem}
+  ほかに、Fourier変換を
+  \begin{equation}
+    \hat{f}(\xi)=\int_{\bbR^n}f(x)e^{-2\pi i\xi x}dx
+  \end{equation}
+  で定義し、逆Fourier変換を
+  \begin{equation}
+    f(x)=\int_{\bbR^n}\hat{f}(\xi)e^{2\pi i\xi x}d\xi
+  \end{equation}
+  で定義する流儀も存在する。
+  変数$\xi$は周波数と呼ばれる。
+  どちらの流儀でも、Fourier変換・逆Fourier変換は$L^2$内積についてユニタリである。
+\end{rem}
